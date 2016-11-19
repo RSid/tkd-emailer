@@ -19,6 +19,7 @@ namespace TKD.Emailer.Services
             {
                 conn.Open();
                 var comm = conn.CreateCommand();
+                
                 comm.CommandText = sqlCommand;
                 comm.CommandType = CommandType.Text;
 

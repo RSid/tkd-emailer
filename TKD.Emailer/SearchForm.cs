@@ -8,7 +8,9 @@ namespace TKD.Emailer
     public partial class SearchForm : Form
     {
         private readonly DbService m_dbService;
-        private const string SelectSql = "SELECT fname as First_Name, lname as Last_Name, email FROM personalprofiles";
+        private const string SelectSql = @"SELECT pp.id, pp.fname as First_Name, pp.lname as Last_Name, pp.email, pp.NextRank 
+FROM personalprofiles pp 
+WHERE email LIKE '%@%' ";
 
         public SearchForm()
         {
@@ -28,6 +30,7 @@ namespace TKD.Emailer
 
             sql = ApplyGenderSelectors(sql);
 
+            sql += " ORDER BY lName";
             var grid = m_dbService.Search(sql);
             grid.Dock = DockStyle.Fill;
             grid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -51,7 +54,7 @@ namespace TKD.Emailer
 
             if (selectedGenderStrings != null)
             {
-                sql += $" WHERE sex IN ({selectedGenderStrings})";
+                sql += $" AND sex IN ({selectedGenderStrings})";
             }
             return sql;
         }

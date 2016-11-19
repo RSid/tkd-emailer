@@ -47,8 +47,8 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.dbServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.GenderPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -60,7 +60,7 @@
             // 
             this.searchButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.Location = new System.Drawing.Point(13, 238);
+            this.searchButton.Location = new System.Drawing.Point(12, 146);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(100, 20);
             this.searchButton.TabIndex = 2;
@@ -70,9 +70,9 @@
             // 
             // resultsPanel
             // 
-            this.resultsPanel.Location = new System.Drawing.Point(2, 274);
+            this.resultsPanel.Location = new System.Drawing.Point(2, 183);
             this.resultsPanel.Name = "resultsPanel";
-            this.resultsPanel.Size = new System.Drawing.Size(775, 100);
+            this.resultsPanel.Size = new System.Drawing.Size(775, 191);
             this.resultsPanel.TabIndex = 4;
             // 
             // GenderPanel
@@ -163,6 +163,7 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
+            this.radioButton7.Checked = true;
             this.radioButton7.Location = new System.Drawing.Point(4, 26);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(36, 17);
@@ -216,6 +217,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
+            this.radioButton4.Checked = true;
             this.radioButton4.Location = new System.Drawing.Point(4, 27);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(36, 17);
@@ -235,20 +237,21 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(14, 132);
+            this.panel5.Controls.Add(this.checkBox1);
+            this.panel5.Location = new System.Drawing.Point(12, 116);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(272, 43);
+            this.panel5.Size = new System.Drawing.Size(198, 24);
             this.panel5.TabIndex = 8;
             // 
-            // label5
+            // checkBox1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(173, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Include Salutation (\"Dear Mr.\", etc)";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(0, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(192, 17);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "Include Salutation (\"Dear Mr.\", etc)";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // SearchForm
             // 
@@ -262,7 +265,7 @@
             this.Controls.Add(this.GenderPanel);
             this.Controls.Add(this.resultsPanel);
             this.Name = "SearchForm";
-            this.Text = "Form1";
+            this.Text = "TKD Emailer";
             this.Load += new System.EventHandler(this.SearchForm_Load);
             this.GenderPanel.ResumeLayout(false);
             this.GenderPanel.PerformLayout();
@@ -288,7 +291,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton MaleRadioButton;
         private System.Windows.Forms.RadioButton FemaleRadioButton;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -298,6 +300,7 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
