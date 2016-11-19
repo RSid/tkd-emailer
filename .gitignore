@@ -1,0 +1,10 @@
+# User-specific files
+*.suo
+
+# Build results
+[Dd]ebug/
+[Bb]in/
+[Oo]bj/
+
+TKD.Emailer/Config.cs
+TKD.Emailer/mas_2000.mdb
