@@ -41,9 +41,9 @@
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.RankPanel = new System.Windows.Forms.Panel();
+            this.BlackBeltsRadioButton = new System.Windows.Forms.RadioButton();
+            this.ColorBeltsRadioButton = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -51,7 +51,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.GenderPanel.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.RankPanel.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -145,7 +145,6 @@
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(54, 17);
             this.radioButton9.TabIndex = 3;
-            this.radioButton9.TabStop = true;
             this.radioButton9.Text = "Adults";
             this.radioButton9.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +155,6 @@
             this.radioButton8.Name = "radioButton8";
             this.radioButton8.Size = new System.Drawing.Size(63, 17);
             this.radioButton8.TabIndex = 2;
-            this.radioButton8.TabStop = true;
             this.radioButton8.Text = "Children";
             this.radioButton8.UseVisualStyleBackColor = true;
             // 
@@ -181,38 +179,36 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Age Range";
             // 
-            // panel4
+            // RankPanel
             // 
-            this.panel4.Controls.Add(this.radioButton6);
-            this.panel4.Controls.Add(this.radioButton5);
-            this.panel4.Controls.Add(this.radioButton4);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(299, 9);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(141, 100);
-            this.panel4.TabIndex = 7;
+            this.RankPanel.Controls.Add(this.BlackBeltsRadioButton);
+            this.RankPanel.Controls.Add(this.ColorBeltsRadioButton);
+            this.RankPanel.Controls.Add(this.radioButton4);
+            this.RankPanel.Controls.Add(this.label4);
+            this.RankPanel.Location = new System.Drawing.Point(299, 9);
+            this.RankPanel.Name = "RankPanel";
+            this.RankPanel.Size = new System.Drawing.Size(170, 100);
+            this.RankPanel.TabIndex = 7;
             // 
-            // radioButton6
+            // BlackBeltsRadioButton
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(4, 74);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(78, 17);
-            this.radioButton6.TabIndex = 3;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Black Belts";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.BlackBeltsRadioButton.AutoSize = true;
+            this.BlackBeltsRadioButton.Location = new System.Drawing.Point(4, 74);
+            this.BlackBeltsRadioButton.Name = "BlackBeltsRadioButton";
+            this.BlackBeltsRadioButton.Size = new System.Drawing.Size(78, 17);
+            this.BlackBeltsRadioButton.TabIndex = 3;
+            this.BlackBeltsRadioButton.Text = "Black Belts";
+            this.BlackBeltsRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // ColorBeltsRadioButton
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(4, 51);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(75, 17);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Color Belts";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.ColorBeltsRadioButton.AutoSize = true;
+            this.ColorBeltsRadioButton.Location = new System.Drawing.Point(4, 51);
+            this.ColorBeltsRadioButton.Name = "ColorBeltsRadioButton";
+            this.ColorBeltsRadioButton.Size = new System.Drawing.Size(75, 17);
+            this.ColorBeltsRadioButton.TabIndex = 2;
+            this.ColorBeltsRadioButton.Text = "Color Belts";
+            this.ColorBeltsRadioButton.UseVisualStyleBackColor = true;
             // 
             // radioButton4
             // 
@@ -220,10 +216,10 @@
             this.radioButton4.Checked = true;
             this.radioButton4.Location = new System.Drawing.Point(4, 27);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(36, 17);
+            this.radioButton4.Size = new System.Drawing.Size(168, 17);
             this.radioButton4.TabIndex = 1;
             this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "All";
+            this.radioButton4.Text = "All (includes no recorded rank)";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -240,13 +236,13 @@
             this.panel5.Controls.Add(this.checkBox1);
             this.panel5.Location = new System.Drawing.Point(12, 116);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(198, 24);
+            this.panel5.Size = new System.Drawing.Size(200, 24);
             this.panel5.TabIndex = 8;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(0, 3);
+            this.checkBox1.Location = new System.Drawing.Point(3, 4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(192, 17);
             this.checkBox1.TabIndex = 1;
@@ -260,7 +256,7 @@
             this.ClientSize = new System.Drawing.Size(789, 386);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.RankPanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.GenderPanel);
             this.Controls.Add(this.resultsPanel);
@@ -271,8 +267,8 @@
             this.GenderPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.RankPanel.ResumeLayout(false);
+            this.RankPanel.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).EndInit();
@@ -288,7 +284,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel RankPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.RadioButton MaleRadioButton;
@@ -297,8 +293,8 @@
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton BlackBeltsRadioButton;
+        private System.Windows.Forms.RadioButton ColorBeltsRadioButton;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.CheckBox checkBox1;
     }
