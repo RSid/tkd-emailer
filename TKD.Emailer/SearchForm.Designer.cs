@@ -187,7 +187,7 @@
             this.RankPanel.Controls.Add(this.label4);
             this.RankPanel.Location = new System.Drawing.Point(299, 9);
             this.RankPanel.Name = "RankPanel";
-            this.RankPanel.Size = new System.Drawing.Size(170, 100);
+            this.RankPanel.Size = new System.Drawing.Size(173, 100);
             this.RankPanel.TabIndex = 7;
             // 
             // BlackBeltsRadioButton

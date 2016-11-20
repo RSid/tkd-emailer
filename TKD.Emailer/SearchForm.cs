@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TKD.Emailer.Services;
@@ -38,10 +39,55 @@ WHERE email LIKE '%@%' ";
             sql = ApplyRankSelectors(sql);
 
             sql += " ORDER BY lName";
+            
             var grid = m_dbService.Search(sql);
+            StyleResultsGrid(grid);
+            
+            resultsPanel.Controls.Add(grid);
+        }
+
+        private void StyleResultsGrid(DataGridView grid)
+        {
+            AddSelectorColumn(grid);
+
+            grid.AllowUserToResizeColumns = true;
+            grid.RowHeadersVisible = false;
+            grid.AllowUserToResizeRows = true;
+            grid.Name = "SearchResultsGrid";
+            grid.MultiSelect = true;
             grid.Dock = DockStyle.Fill;
             grid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            resultsPanel.Controls.Add(grid);
+        }
+
+        private void AddSelectorColumn(DataGridView grid)
+        {
+            var selectorColumn = new DataGridViewCheckBoxColumn
+            {
+                Name = "Selected",
+                Width = 60,
+                HeaderText = string.Empty,
+                Selected = false
+            };
+
+            grid.Columns.Add(selectorColumn);
+
+            var checkbox = new CheckBox
+            {
+                Size = new Size(45, 15),
+                BackColor = Color.Transparent,
+                Padding = new Padding(0),
+                Margin = new Padding(0),
+                Name = "SelectAll",
+                TextAlign = ContentAlignment.MiddleCenter,
+                Text = "All"
+            };
+
+            grid.Controls.Add(checkbox);
+            DataGridViewHeaderCell header = grid.Columns[selectorColumn.Index].HeaderCell;
+            checkbox.Location = new Point(
+                header.ContentBounds.Left + (header.ContentBounds.Right - header.ContentBounds.Left + checkbox.Size.Width) / 2,
+                header.ContentBounds.Top + (header.ContentBounds.Bottom - header.ContentBounds.Top + checkbox.Size.Height) / 2
+            );
         }
 
         private string ApplyRankSelectors(string sql)
