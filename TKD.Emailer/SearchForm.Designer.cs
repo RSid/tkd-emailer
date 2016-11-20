@@ -47,8 +47,9 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.dbServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dbServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SendEmailToSelectedPanel = new System.Windows.Forms.Panel();
             this.GenderPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.RankPanel.SuspendLayout();
@@ -249,11 +250,19 @@
             this.checkBox1.Text = "Include Salutation (\"Dear Mr.\", etc)";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // SendEmailToSelectedPanel
+            // 
+            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(2, 380);
+            this.SendEmailToSelectedPanel.Name = "SendEmailToSelectedPanel";
+            this.SendEmailToSelectedPanel.Size = new System.Drawing.Size(200, 37);
+            this.SendEmailToSelectedPanel.TabIndex = 9;
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 386);
+            this.ClientSize = new System.Drawing.Size(789, 429);
+            this.Controls.Add(this.SendEmailToSelectedPanel);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.RankPanel);
@@ -297,6 +306,7 @@
         private System.Windows.Forms.RadioButton ColorBeltsRadioButton;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Panel SendEmailToSelectedPanel;
     }
 }
 

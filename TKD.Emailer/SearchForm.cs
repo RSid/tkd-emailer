@@ -1,18 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using TKD.Emailer.Models;
 using TKD.Emailer.Services;
+using static TKD.Emailer.Helpers.DataGridHelper;
 
 namespace TKD.Emailer
 {
     public partial class SearchForm : Form
     {
         private readonly DbService m_dbService;
-        private const string SelectSql = @"SELECT personalprofiles.id, 
-    personalprofiles.fname as First_Name, 
-    personalprofiles.lname as Last_Name, 
-    personalprofiles.email, 
+        private const string ResultsGridName = "SearchResultsGrid";
+        private const string SelectedColumnName = "Selected";
+        private const string FirstNameColumnName = "First_Name";
+        private const string LastNameColumnName = "Last_Name";
+        private const string EmailColumnName = "Email";
+
+        private static readonly string SelectSql = $@"SELECT personalprofiles.id, 
+    personalprofiles.fname as {FirstNameColumnName}, 
+    personalprofiles.lname as {LastNameColumnName}, 
+    personalprofiles.email as {EmailColumnName}, 
     personalprofiles.NextRank,
     ranks.rorder as NextRankOrder 
 FROM personalprofiles  
@@ -41,9 +50,41 @@ WHERE email LIKE '%@%' ";
             sql += " ORDER BY lName";
             
             var grid = m_dbService.Search(sql);
+
+            AddSendEmailButton();
             StyleResultsGrid(grid);
-            
             resultsPanel.Controls.Add(grid);
+        }
+
+        private void SendResultsToSelectedButton_Click(object sender, EventArgs e)
+        {
+            var resultsControl = resultsPanel.Controls.Find(ResultsGridName, true);
+            var resultsGrid = (DataGridView)resultsControl[0];
+           
+            var selectedRecipients = new List<EmailRecipientDTO>();
+            foreach (DataGridViewRow row in resultsGrid.Rows)
+            {
+                var boolValue = row.Cells[SelectedColumnName].Value as bool?;
+                if (boolValue != null && boolValue.Value)
+                {
+                    var firstName = row.Cells.GetCellValueFromColumnHeader(FirstNameColumnName) as string;
+                    var lastName = row.Cells.GetCellValueFromColumnHeader(LastNameColumnName) as string;
+                    var email = row.Cells.GetCellValueFromColumnHeader(EmailColumnName) as string;
+                    var recipient = new EmailRecipientDTO(firstName, lastName, email);
+                    selectedRecipients.Add(recipient);
+                }
+            }
+        }
+
+        private void AddSendEmailButton()
+        {
+            var sendButton = new Button
+            {
+                Name = "SendResultsToSelected",
+                Text = "Send to selected recipients"
+            };
+            sendButton.Click += SendResultsToSelectedButton_Click;
+            SendEmailToSelectedPanel.Controls.Add(sendButton);
         }
 
         private void StyleResultsGrid(DataGridView grid)
@@ -53,7 +94,7 @@ WHERE email LIKE '%@%' ";
             grid.AllowUserToResizeColumns = true;
             grid.RowHeadersVisible = false;
             grid.AllowUserToResizeRows = true;
-            grid.Name = "SearchResultsGrid";
+            grid.Name = ResultsGridName;
             grid.MultiSelect = true;
             grid.Dock = DockStyle.Fill;
             grid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -63,10 +104,12 @@ WHERE email LIKE '%@%' ";
         {
             var selectorColumn = new DataGridViewCheckBoxColumn
             {
-                Name = "Selected",
+                Name = SelectedColumnName,
                 Width = 60,
                 HeaderText = string.Empty,
-                Selected = false
+                Selected = false,
+                FalseValue = false,
+                TrueValue = true
             };
 
             grid.Columns.Add(selectorColumn);
