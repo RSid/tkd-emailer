@@ -94,7 +94,6 @@ WHERE email LIKE '%@%' ";
             grid.RowHeadersVisible = false;
             grid.AllowUserToResizeRows = true;
             grid.Name = ResultsGridName;
-            grid.MultiSelect = true;
             grid.Dock = DockStyle.Fill;
             grid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
@@ -123,13 +122,25 @@ WHERE email LIKE '%@%' ";
                 TextAlign = ContentAlignment.MiddleCenter,
                 Text = "All"
             };
-
+            checkbox.Click += SelectAllCheckbox_Click;
             grid.Controls.Add(checkbox);
             DataGridViewHeaderCell header = grid.Columns[selectorColumn.Index].HeaderCell;
             checkbox.Location = new Point(
                 header.ContentBounds.Left + (header.ContentBounds.Right - header.ContentBounds.Left + checkbox.Size.Width) / 2,
                 header.ContentBounds.Top + (header.ContentBounds.Bottom - header.ContentBounds.Top + checkbox.Size.Height) / 2
             );
+        }
+
+        private void SelectAllCheckbox_Click(object sender, EventArgs e)
+        {
+            var resultsGrid = resultsPanel.GetDataGridViewFromPanelByName(ResultsGridName);
+
+            var selectAll = ((CheckBox)sender).Checked;
+
+            foreach (DataGridViewRow row in resultsGrid.Rows)
+            {
+                row.Cells[SelectedColumnName].Value = selectAll;
+            }
         }
 
         private string ApplyRankSelectors(string sql)
