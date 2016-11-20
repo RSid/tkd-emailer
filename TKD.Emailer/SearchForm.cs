@@ -11,27 +11,14 @@ namespace TKD.Emailer
 {
     public partial class SearchForm : Form
     {
-        private readonly DbService m_dbService;
+        private readonly SearchService m_searchService;
+
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
-        private const string FirstNameColumnName = "First_Name";
-        private const string LastNameColumnName = "Last_Name";
-        private const string EmailColumnName = "Email";
-
-        private static readonly string SelectSql = $@"SELECT personalprofiles.id, 
-    personalprofiles.fname as {FirstNameColumnName}, 
-    personalprofiles.lname as {LastNameColumnName}, 
-    personalprofiles.email as {EmailColumnName}, 
-    personalprofiles.NextRank,
-    ranks.rorder as NextRankOrder 
-FROM personalprofiles  
-    INNER JOIN ranks ON personalprofiles.NextRank=ranks.name
-WHERE email LIKE '%@%' ";
-
+        
         public SearchForm()
         {
-            m_dbService = new DbService();
-            
+            m_searchService = new SearchService(new DbService());
             InitializeComponent();
         }
         
@@ -42,14 +29,14 @@ WHERE email LIKE '%@%' ";
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            var sql = SelectSql;
+            var checkedGenderButtonName = GenderPanel.Controls.OfType<RadioButton>()
+                .First(radio => radio.Checked).Name;
 
-            sql = ApplyGenderSelectors(sql);
-            sql = ApplyRankSelectors(sql);
+            var checkedRankButtonName = RankPanel.Controls.OfType<RadioButton>()
+                .First(radio => radio.Checked).Name;
 
-            sql += " ORDER BY lName";
-            
-            var grid = m_dbService.Search(sql);
+            var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName);
+            var grid = m_searchService.Search(sql);
 
             AddSendEmailButton();
             StyleResultsGrid(grid);
@@ -141,50 +128,6 @@ WHERE email LIKE '%@%' ";
             {
                 row.Cells[SelectedColumnName].Value = selectAll;
             }
-        }
-
-        private string ApplyRankSelectors(string sql)
-        {
-            var checkedRankButton = RankPanel.Controls.OfType<RadioButton>()
-                .First(radio => radio.Checked);
-
-            string rankFilterString = null;
-            if (checkedRankButton.Name == "ColorBeltsRadioButton")
-            {
-                rankFilterString = " AND rorder < 11";
-            }
-            if (checkedRankButton.Name == "BlackBeltsRadioButton")
-            {
-                rankFilterString = " AND rorder > 10";
-            }
-            if (rankFilterString !=null)
-            {
-                sql += rankFilterString;
-            }
-
-            return sql;
-        }
-
-        private string ApplyGenderSelectors(string sql)
-        {
-            var checkedGenderButton = GenderPanel.Controls.OfType<RadioButton>()
-                .First(radio => radio.Checked);
-
-            string selectedGenderStrings = null;
-            if (checkedGenderButton.Name == "FemaleRadioButton")
-            {
-                selectedGenderStrings = "'F', 'Female', 'Fenmale'";
-            }
-            if (checkedGenderButton.Name == "MaleRadioButton")
-            {
-                selectedGenderStrings = "'M', 'Male'";
-            }
-
-            if (selectedGenderStrings != null)
-            {
-                sql += $" AND sex IN ({selectedGenderStrings})";
-            }
-            return sql;
         }
     }
 }

@@ -6,6 +6,13 @@ namespace TKD.Emailer.Helpers
     public static class DataGridHelper
     {
         /// <summary>
+        /// Datagridview column name constants
+        /// </summary>
+        internal const string FirstNameColumnName = "First_Name";
+        internal const string LastNameColumnName = "Last_Name";
+        internal const string EmailColumnName = "Email";
+
+        /// <summary>
         /// From http://stackoverflow.com/questions/13436553/how-to-get-cell-value-of-datagridview-by-column-name
         /// cred Patrick Quirk
         /// </summary>

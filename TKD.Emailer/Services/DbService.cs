@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace TKD.Emailer.Services
@@ -50,6 +52,15 @@ namespace TKD.Emailer.Services
             var dataTable = QueryDatabase(sql);
             var grid = new DataGridView { DataSource = dataTable.Tables[0] };
             return grid;
+        }
+
+        public Dictionary<int, string> GetRankAndOrder()
+        {
+            var rankSql = "SELECT name, rorder FROM ranks";
+            var dataSet = QueryDatabase(rankSql);
+            return dataSet.Tables[0].AsEnumerable()
+      .ToDictionary<DataRow, int, string>(row => row.Field<int>(0),
+                                row => row.Field<string>(1));
         }
     }
 }
