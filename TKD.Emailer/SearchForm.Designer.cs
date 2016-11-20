@@ -271,7 +271,6 @@
             this.Controls.Add(this.resultsPanel);
             this.Name = "SearchForm";
             this.Text = "TKD Emailer";
-            this.Load += new System.EventHandler(this.SearchForm_Load);
             this.GenderPanel.ResumeLayout(false);
             this.GenderPanel.PerformLayout();
             this.panel3.ResumeLayout(false);

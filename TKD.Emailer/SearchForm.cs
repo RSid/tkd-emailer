@@ -22,11 +22,6 @@ namespace TKD.Emailer
             InitializeComponent();
         }
         
-        private void SearchForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void searchButton_Click(object sender, EventArgs e)
         {
             var checkedGenderButtonName = GenderPanel.Controls.OfType<RadioButton>()
