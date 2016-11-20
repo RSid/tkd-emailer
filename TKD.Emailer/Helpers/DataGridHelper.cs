@@ -16,5 +16,12 @@ namespace TKD.Emailer.Helpers
         {
             return CellCollection.Cast<DataGridViewCell>().First(c => c.OwningColumn.HeaderText == HeaderText).Value;
         }
+
+        public static DataGridView GetDataGridViewFromPanelByName(this Panel panel, string gridName)
+        {
+            var control = panel.Controls.Find(gridName, true);
+            var grid = (DataGridView)control[0];
+            return grid;
+        }
     }
 }

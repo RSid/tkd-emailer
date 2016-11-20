@@ -58,8 +58,7 @@ WHERE email LIKE '%@%' ";
 
         private void SendResultsToSelectedButton_Click(object sender, EventArgs e)
         {
-            var resultsControl = resultsPanel.Controls.Find(ResultsGridName, true);
-            var resultsGrid = (DataGridView)resultsControl[0];
+            var resultsGrid = resultsPanel.GetDataGridViewFromPanelByName(ResultsGridName);
            
             var selectedRecipients = new List<EmailRecipientDTO>();
             foreach (DataGridViewRow row in resultsGrid.Rows)
