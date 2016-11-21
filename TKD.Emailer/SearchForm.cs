@@ -12,6 +12,7 @@ namespace TKD.Emailer
     public partial class SearchForm : Form
     {
         private readonly SearchService m_searchService;
+        private readonly EmailService m_emailService;
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
@@ -19,6 +20,7 @@ namespace TKD.Emailer
         public SearchForm()
         {
             m_searchService = new SearchService(new DbService());
+            m_emailService = new EmailService();
             InitializeComponent();
         }
         
@@ -54,6 +56,22 @@ namespace TKD.Emailer
                     var recipient = new EmailRecipientDTO(firstName, lastName, email);
                     selectedRecipients.Add(recipient);
                 }
+            }
+
+            var results = m_emailService.SendEmail(selectedRecipients);
+
+            if (results.Errors.Any())
+            {
+                var firstError = results.Errors.First();
+                var dlgRes =  MessageBox.Show(
+                    firstError.Message
+                    + "exception message: " 
+                        + firstError.FullException.Message,
+                    firstError.FullException.GetType().ToString(),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Question);
+
+                if (dlgRes == DialogResult.OK) { Application.Exit(); }
             }
         }
 
