@@ -6,5 +6,8 @@
 [Bb]in/
 [Oo]bj/
 
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+
 TKD.Emailer/Config.cs
 TKD.Emailer/mas_2000.mdb
