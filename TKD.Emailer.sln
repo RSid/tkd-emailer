@@ -5,16 +5,37 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKD.Emailer", "TKD.Emailer\TKD.Emailer.csproj", "{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}"
 EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup2", "Setup2\Setup2.isproj", "{AECFAECE-9C15-4774-91B9-F516B39877EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
 		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{0747E3D0-AE5F-4621-89DA-EF12D4D81B88}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.Debug|Any CPU.ActiveCfg = DVD-5
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.Debug|Any CPU.Build.0 = DVD-5
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.DVD-5|Any CPU.Build.0 = DVD-5
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.Release|Any CPU.ActiveCfg = SingleImage
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.Release|Any CPU.Build.0 = SingleImage
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{AECFAECE-9C15-4774-91B9-F516B39877EB}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
