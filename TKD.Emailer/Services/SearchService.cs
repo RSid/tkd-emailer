@@ -14,7 +14,19 @@ namespace TKD.Emailer.Services
     personalprofiles.NextRank,
     ranks.rorder as NextRankOrder 
 FROM personalprofiles  
-    INNER JOIN ranks ON personalprofiles.NextRank=ranks.name
+    LEFT JOIN ranks ON personalprofiles.NextRank=ranks.name
+WHERE email LIKE '%@%' 
+
+UNION 
+
+SELECT personalprofiles.id, 
+    personalprofiles.fname as {FirstNameColumnName}, 
+    personalprofiles.lname as {LastNameColumnName}, 
+    personalprofiles.email as {EmailColumnName}, 
+    personalprofiles.NextRank,
+    ranks.rorder as NextRankOrder 
+FROM personalprofiles  
+    RIGHT JOIN ranks ON personalprofiles.NextRank=ranks.name
 WHERE email LIKE '%@%' ";
 
         public SearchService(DbService dbService)
@@ -28,7 +40,7 @@ WHERE email LIKE '%@%' ";
             sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
             sql = ApplyRankSelectors(sql, checkedRankButtonName);
 
-            sql += " ORDER BY lName";
+            sql += $" ORDER BY {LastNameColumnName}";
             return sql;
         }
 
