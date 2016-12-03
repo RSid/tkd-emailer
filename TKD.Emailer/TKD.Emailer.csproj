@@ -62,6 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComposeEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComposeEmail.Designer.cs">
+      <DependentUpon>ComposeEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Config.cs" />
     <Compile Include="Dtos\ErrorDTO.cs" />
     <Compile Include="Dtos\ResultDTO.cs" />
@@ -78,6 +84,9 @@
     <Compile Include="Services\DbService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\SearchService.cs" />
+    <EmbeddedResource Include="ComposeEmail.resx">
+      <DependentUpon>ComposeEmail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

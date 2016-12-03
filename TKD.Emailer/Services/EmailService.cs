@@ -10,7 +10,7 @@ namespace TKD.Emailer.Services
 {
     internal class EmailService
     {
-        public ResultDTO SendEmail(IEnumerable<EmailRecipientDTO> recipientDtos)
+        public ResultDTO SendEmail(IEnumerable<EmailRecipientDTO> recipientDtos, string subject, string body)
         {
             var result = new ResultDTO
             {
@@ -25,8 +25,8 @@ namespace TKD.Emailer.Services
                 var recipientEmails = string.Join(";", recipientDtos.Select(recipient => recipient.Email));
 
                 mailItem.Recipients.Add(recipientEmails);
-                mailItem.Subject = "Dummy Subject";
-                mailItem.Body = "Dummy Email Body";
+                mailItem.Subject = subject;
+                mailItem.Body = body;
                 mailItem.Send();
 
                 outlookApplication.Quit();
