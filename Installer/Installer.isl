@@ -339,6 +339,7 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
+		<row><td>IS_ININSTALL_SHORTCUT</td><td>{E56FE979-2FFF-4476-B885-8CE7CE4668F2}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>TKD.Emailer.Primary_output</td><td>{D88AD3BE-F8E6-4D3D-8FBD-2E969F8CCB81}</td><td>INSTALLDIR</td><td>2</td><td/><td>tkd.emailer.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
@@ -1048,6 +1049,7 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>INSTALLDIR</td><td>IS_ININSTALL_SHORTCUT</td></row>
 		<row><td>INSTALLDIR</td><td>TKD.Emailer.Primary_output</td></row>
 	</table>
 
@@ -1860,6 +1862,7 @@
 	<table name="FeatureComponents">
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>AlwaysInstall</td><td>IS_ININSTALL_SHORTCUT</td></row>
 		<row><td>AlwaysInstall</td><td>TKD.Emailer.Primary_output</td></row>
 	</table>
 
@@ -1891,6 +1894,7 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
+		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -2017,6 +2021,7 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
+		<row><td>IS_ININSTALL_SHORTCUT</td><td/><td/><td>_4DE2DE98_6352_41F7_8D4B_453C3CB8AFA0_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>TKD.Emailer.Primary_output</td><td/><td/><td>_ABC87ADD_56CF_4D0E_B074_59E0E45BC87C_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -3824,6 +3829,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;VSSolutionFolder&gt;\TKD.Emailer\Resources\mail.ico</td><td>0</td></row>
+		<row><td>UNINST_Uninstall_I_A739D444C87E49948EF765D942275DE6.exe</td><td/><td>C:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
 		<row><td>_Built1_E6288CA825C84E14BDC8289512EB83C4.exe</td><td/><td>&lt;VSSolutionFolder&gt;\TKD.Emailer\Resources\mail.ico</td><td>0</td></row>
 		<row><td>_Built_B8BE2F1093CD4D83A031013184B73CEC.exe</td><td/><td>&lt;VSSolutionFolder&gt;\TKD.Emailer\Resources\mail.ico</td><td>0</td></row>
 	</table>
@@ -4409,6 +4415,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="i2">InstallMode</col>
 		<row><td>FileKey1</td><td>TKD.Emailer.Primary_output</td><td/><td>allaho_1_allahoffman</td><td>2</td></row>
 		<row><td>FileKey2</td><td>TKD.Emailer.Primary_output</td><td/><td>instal_1_installer</td><td>2</td></row>
+		<row><td>UNINST_Uninstall_Installer</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>instal_1_installer</td><td>2</td></row>
 		<row><td>_Built</td><td>TKD.Emailer.Primary_output</td><td/><td>instal_1_installer</td><td>2</td></row>
 	</table>
 
@@ -4495,6 +4502,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>UNINST_Uninstall_Installer</td><td>instal_1_installer</td><td>UNINST|Uninstall Installer</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {C33D4327-C459-4C9E-9855-104814A98DCD}</td><td/><td/><td>UNINST_Uninstall_I_A739D444C87E49948EF765D942275DE6.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>_Built</td><td>instal_1_installer</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>TKD.Emailer.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_B8BE2F1093CD4D83A031013184B73CEC.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>TKD.Emailer.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_E6288CA825C84E14BDC8289512EB83C4.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
