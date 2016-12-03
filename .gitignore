@@ -7,9 +7,8 @@
 [Oo]bj/
 
 # Installer results
-Installer/Installer/Express/DVD-5/*
-Installer/Installer/Express/LogFiles/*
-Installer/Installer/Express/Reports/*
+Installer/Installer/Express/DVD-5/LogFiles/*
+Installer/Installer/Express/DVD-5/Reports/*
 
 # The packages folder can be ignored because of Package Restore
 **/packages/*
