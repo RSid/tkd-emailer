@@ -62,7 +62,7 @@
             // 
             this.searchButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.Location = new System.Drawing.Point(265, 115);
+            this.searchButton.Location = new System.Drawing.Point(452, 115);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(100, 20);
             this.searchButton.TabIndex = 2;
@@ -72,9 +72,9 @@
             // 
             // resultsPanel
             // 
-            this.resultsPanel.Location = new System.Drawing.Point(2, 193);
+            this.resultsPanel.Location = new System.Drawing.Point(2, 145);
             this.resultsPanel.Name = "resultsPanel";
-            this.resultsPanel.Size = new System.Drawing.Size(775, 204);
+            this.resultsPanel.Size = new System.Drawing.Size(550, 286);
             this.resultsPanel.TabIndex = 4;
             // 
             // GenderPanel
@@ -83,7 +83,7 @@
             this.GenderPanel.Controls.Add(this.FemaleRadioButton);
             this.GenderPanel.Controls.Add(this.radioButton1);
             this.GenderPanel.Controls.Add(this.label2);
-            this.GenderPanel.Location = new System.Drawing.Point(12, 66);
+            this.GenderPanel.Location = new System.Drawing.Point(424, 10);
             this.GenderPanel.Name = "GenderPanel";
             this.GenderPanel.Size = new System.Drawing.Size(128, 99);
             this.GenderPanel.TabIndex = 5;
@@ -135,7 +135,7 @@
             this.AgePanel.Controls.Add(this.Children);
             this.AgePanel.Controls.Add(this.All);
             this.AgePanel.Controls.Add(this.label3);
-            this.AgePanel.Location = new System.Drawing.Point(166, 9);
+            this.AgePanel.Location = new System.Drawing.Point(146, 10);
             this.AgePanel.Name = "AgePanel";
             this.AgePanel.Size = new System.Drawing.Size(93, 99);
             this.AgePanel.TabIndex = 6;
@@ -175,7 +175,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 8);
+            this.label3.Location = new System.Drawing.Point(1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 0;
@@ -187,7 +187,7 @@
             this.RankPanel.Controls.Add(this.ColorBeltsRadioButton);
             this.RankPanel.Controls.Add(this.radioButton4);
             this.RankPanel.Controls.Add(this.label4);
-            this.RankPanel.Location = new System.Drawing.Point(265, 9);
+            this.RankPanel.Location = new System.Drawing.Point(245, 10);
             this.RankPanel.Name = "RankPanel";
             this.RankPanel.Size = new System.Drawing.Size(173, 100);
             this.RankPanel.TabIndex = 7;
@@ -227,7 +227,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 10);
+            this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 0;
@@ -236,7 +236,7 @@
             // categoryLabel
             // 
             this.categoryLabel.AutoSize = true;
-            this.categoryLabel.Location = new System.Drawing.Point(3, 1);
+            this.categoryLabel.Location = new System.Drawing.Point(3, 0);
             this.categoryLabel.Name = "categoryLabel";
             this.categoryLabel.Size = new System.Drawing.Size(49, 13);
             this.categoryLabel.TabIndex = 3;
@@ -244,7 +244,7 @@
             // 
             // SendEmailToSelectedPanel
             // 
-            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(2, 403);
+            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(2, 437);
             this.SendEmailToSelectedPanel.Name = "SendEmailToSelectedPanel";
             this.SendEmailToSelectedPanel.Size = new System.Drawing.Size(200, 37);
             this.SendEmailToSelectedPanel.TabIndex = 9;
@@ -254,12 +254,12 @@
             this.CategoryPanel.Controls.Add(this.categoryLabel);
             this.CategoryPanel.Location = new System.Drawing.Point(13, 9);
             this.CategoryPanel.Name = "CategoryPanel";
-            this.CategoryPanel.Size = new System.Drawing.Size(147, 51);
+            this.CategoryPanel.Size = new System.Drawing.Size(127, 51);
             this.CategoryPanel.TabIndex = 10;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(543, 19);
+            this.button1.Location = new System.Drawing.Point(603, 145);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 41);
             this.button1.TabIndex = 11;
@@ -271,7 +271,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 452);
+            this.ClientSize = new System.Drawing.Size(789, 497);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CategoryPanel);
             this.Controls.Add(this.SendEmailToSelectedPanel);
