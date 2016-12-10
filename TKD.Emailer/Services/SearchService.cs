@@ -7,26 +7,15 @@ namespace TKD.Emailer.Services
     {
         private readonly DbService m_dbService;
 
-        private static readonly string SelectSql = $@"SELECT personalprofiles.id, 
-    personalprofiles.fname as {FirstNameColumnName}, 
-    personalprofiles.lname as {LastNameColumnName}, 
-    personalprofiles.email as {EmailColumnName}, 
-    personalprofiles.NextRank,
-    ranks.rorder as NextRankOrder 
-FROM personalprofiles  
-    LEFT JOIN ranks ON personalprofiles.NextRank=ranks.name
-WHERE email LIKE '%@%' 
-
-UNION 
-
+        private static readonly string SelectSql = $@"
 SELECT personalprofiles.id, 
     personalprofiles.fname as {FirstNameColumnName}, 
     personalprofiles.lname as {LastNameColumnName}, 
     personalprofiles.email as {EmailColumnName}, 
     personalprofiles.NextRank,
-    ranks.rorder as NextRankOrder 
+ personalprofiles.categoryid 
 FROM personalprofiles  
-    RIGHT JOIN ranks ON personalprofiles.NextRank=ranks.name
+   
 WHERE email LIKE '%@%' ";
 
         public SearchService(DbService dbService)
@@ -42,7 +31,7 @@ WHERE email LIKE '%@%' ";
             sql = ApplyRankSelectors(sql, checkedRankButtonName);
             sql = ApplyCategorySelector(sql, selectedCategoryId);
 
-            sql += $" ORDER BY {LastNameColumnName}";
+            sql += " ORDER BY lname";
             return sql;
         }
 
