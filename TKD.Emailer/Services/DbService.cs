@@ -54,6 +54,13 @@ namespace TKD.Emailer.Services
             return grid;
         }
 
+        public DataTable GetCategories()
+        {
+            const string categorySql = "SELECT id, description FROM ContactCategories";
+            var dataSet = QueryDatabase(categorySql);
+            return dataSet.Tables[0];
+        }
+
         public Dictionary<int, string> GetRankAndOrder()
         {
             var rankSql = "SELECT name, rorder FROM ranks";

@@ -34,13 +34,28 @@ WHERE email LIKE '%@%' ";
             m_dbService = dbService;
         }
 
-        public string BuildSql(string checkedRankButtonName, string checkedGenderButtonName)
+        public string BuildSql(string checkedRankButtonName, string checkedGenderButtonName, 
+            int? selectedCategoryId)
         {
             var sql = SelectSql;
             sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
             sql = ApplyRankSelectors(sql, checkedRankButtonName);
+            sql = ApplyCategorySelector(sql, selectedCategoryId);
 
             sql += $" ORDER BY {LastNameColumnName}";
+            return sql;
+        }
+
+        private string ApplyCategorySelector(string sql, int? selectedCategoryId)
+        {
+            if (selectedCategoryId == null || selectedCategoryId == SearchForm.NoneId)
+            {
+                return sql;
+            }
+
+            var selectedCategory = $" AND categoryid = {selectedCategoryId.Value}";
+            sql += selectedCategory;
+
             return sql;
         }
 

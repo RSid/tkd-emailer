@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -18,17 +19,47 @@ namespace TKD.Emailer
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
-        
+        private const string CategorySelector = "CategorySelector";
+
+        public const string AllConstant = "All";
+        public const int NoneId = 0;
+
         public SearchForm(string subject, string body)
         {
             m_subject = subject;
             m_body = body;
 
-            m_searchService = new SearchService(new DbService());
+            var dbService = new DbService();
+            m_searchService = new SearchService(dbService);
             m_emailService = new EmailService();
             InitializeComponent();
+
+            CreateCategoryDropdown(dbService);
         }
-        
+
+        private void CreateCategoryDropdown(DbService dbService)
+        {
+            var categories = dbService.GetCategories();
+            var allRow = categories.NewRow();
+            allRow["description"] = AllConstant;
+            allRow["id"] = NoneId;
+            categories.Rows.InsertAt(allRow,0);
+
+
+            var categoryDropDown = new ComboBox()
+            {
+                DataSource = categories,
+                DisplayMember = "description",
+                ValueMember = "id",
+                Location = new Point(0, 20),
+                Name = CategorySelector,
+                Size = new Size(100, 21),
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+
+            CategoryPanel.Controls.Add(categoryDropDown);
+        }
+
         private void searchButton_Click(object sender, EventArgs e)
         {
             var checkedGenderButtonName = GenderPanel.Controls.OfType<RadioButton>()
@@ -37,7 +68,11 @@ namespace TKD.Emailer
             var checkedRankButtonName = RankPanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Name;
 
-            var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName);
+            var selectedCategoryValue = CategoryPanel.Controls.OfType<ComboBox>()
+                .Single().SelectedValue as int?;
+
+            var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName,
+                selectedCategoryValue);
             var grid = m_searchService.Search(sql);
 
             AddSendEmailButton();
