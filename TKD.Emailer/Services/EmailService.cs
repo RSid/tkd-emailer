@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using NetOffice.OutlookApi.Enums;
 using TKD.Emailer.Dtos;
 using TKD.Emailer.Models;
@@ -17,20 +19,20 @@ namespace TKD.Emailer.Services
                 Errors = new List<ErrorDTO>()
             };
 
+            var ol = GetOutlookIfRunning();
+
             try
             {
-                var outlookApplication = new Outlook.Application();
-                var mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;
-
-                var recipientEmails = string.Join(";", recipientDtos.Select(recipient => recipient.Email));
-
-                mailItem.Recipients.Add(recipientEmails);
-                mailItem.Subject = subject;
-                mailItem.Body = body;
+                var outlookApplication = ol ?? new Outlook.Application();
+                var mailItem = BuildMail(recipientDtos, subject, body, outlookApplication);
                 mailItem.Send();
 
-                outlookApplication.Quit();
-                outlookApplication.Dispose();
+                //Quits outlook if it wasn't running before we ran this program
+                if (ol == null)
+                {
+                    outlookApplication.Quit();
+                    outlookApplication.Dispose();
+                }
             }
             catch (ArgumentException ex)
             {
@@ -43,6 +45,29 @@ namespace TKD.Emailer.Services
             }
 
             return result;
+        }
+
+        private static Outlook.Application GetOutlookIfRunning()
+        {
+            var runningOutlookProcesses = Process.GetProcessesByName("OUTLOOK");
+            Outlook.Application ol = null;
+            if (runningOutlookProcesses.Length > 0)
+            {
+                ol = (Outlook.Application) Marshal.GetActiveObject("Outlook.Application");
+            }
+            return ol;
+        }
+
+        private static Outlook.MailItem BuildMail(IEnumerable<EmailRecipientDTO> recipientDtos, string subject, string body, Outlook.Application outlookApplication)
+        {
+            var mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;
+
+            var recipientEmails = string.Join(";", recipientDtos.Select(recipient => recipient.Email));
+
+            mailItem.Recipients.Add(recipientEmails);
+            mailItem.Subject = subject;
+            mailItem.Body = body;
+            return mailItem;
         }
     }
 }
