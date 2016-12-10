@@ -13,7 +13,8 @@ SELECT personalprofiles.id,
     personalprofiles.lname as {LastNameColumnName}, 
     personalprofiles.email as {EmailColumnName}, 
     personalprofiles.NextRank,
- personalprofiles.categoryid 
+ personalprofiles.categoryid,
+-DateDiff('yyyy', Now(), personalprofiles.birthday) as Age
 FROM personalprofiles  
    
 WHERE email LIKE '%@%' ";
@@ -24,14 +25,37 @@ WHERE email LIKE '%@%' ";
         }
 
         public string BuildSql(string checkedRankButtonName, string checkedGenderButtonName, 
-            int? selectedCategoryId)
+            int? selectedCategoryId, string ageCategoryButtonName)
         {
             var sql = SelectSql;
             sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
             sql = ApplyRankSelectors(sql, checkedRankButtonName);
             sql = ApplyCategorySelector(sql, selectedCategoryId);
+            sql = ApplyAgeSelector(sql, ageCategoryButtonName);
 
             sql += " ORDER BY lname";
+            return sql;
+        }
+
+        private string ApplyAgeSelector(string sql, string ageCategoryButtonName)
+        {
+            if (ageCategoryButtonName == SearchForm.AllConstant)
+            {
+                return sql;
+            }
+
+            if (ageCategoryButtonName == "Children")
+            {
+                var ageFilter = $" AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) < {SearchForm.MinAdult}";
+                sql += ageFilter;
+            }
+
+            if (ageCategoryButtonName == "Adults")
+            {
+                var ageFilter = $" AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) >= {SearchForm.MinAdult}";
+                sql += ageFilter;
+            }
+
             return sql;
         }
 

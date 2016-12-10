@@ -16,6 +16,8 @@ namespace TKD.Emailer
         private readonly string m_body;
         private readonly SearchService m_searchService;
         private readonly EmailService m_emailService;
+        private readonly DbService m_dbService;
+        public static int MinAdult;
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
@@ -29,12 +31,21 @@ namespace TKD.Emailer
             m_subject = subject;
             m_body = body;
 
-            var dbService = new DbService();
-            m_searchService = new SearchService(dbService);
+            m_dbService = new DbService();
+            m_searchService = new SearchService(m_dbService);
             m_emailService = new EmailService();
             InitializeComponent();
 
-            CreateCategoryDropdown(dbService);
+            CreateCategoryDropdown(m_dbService);
+            MinAdult = GetMinimumAgeForAdults();
+        }
+
+        private int GetMinimumAgeForAdults()
+        {
+            var schoolAdultMin = "SELECT adultmin FROM school";
+            var adultMin = m_dbService.QueryDatabase(schoolAdultMin);
+            var minByte = adultMin.Tables[0].Rows[0].Field<byte>("adultmin");
+            return Convert.ToInt32(minByte);
         }
 
         private void CreateCategoryDropdown(DbService dbService)
@@ -71,8 +82,11 @@ namespace TKD.Emailer
             var selectedCategoryValue = CategoryPanel.Controls.OfType<ComboBox>()
                 .Single().SelectedValue as int?;
 
+            var ageCategoryButtonName = AgePanel.Controls.OfType<RadioButton>()
+                .First(radio => radio.Checked).Name;
+
             var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName,
-                selectedCategoryValue);
+                selectedCategoryValue, ageCategoryButtonName);
             var grid = m_searchService.Search(sql);
 
             AddSendEmailButton();

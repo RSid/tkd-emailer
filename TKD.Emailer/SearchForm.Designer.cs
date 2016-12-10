@@ -36,10 +36,10 @@
             this.FemaleRadioButton = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.AgePanel = new System.Windows.Forms.Panel();
+            this.Adults = new System.Windows.Forms.RadioButton();
+            this.Children = new System.Windows.Forms.RadioButton();
+            this.All = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.RankPanel = new System.Windows.Forms.Panel();
             this.BlackBeltsRadioButton = new System.Windows.Forms.RadioButton();
@@ -52,7 +52,7 @@
             this.CategoryPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.GenderPanel.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.AgePanel.SuspendLayout();
             this.RankPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).BeginInit();
             this.CategoryPanel.SuspendLayout();
@@ -129,48 +129,48 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Gender";
             // 
-            // panel3
+            // AgePanel
             // 
-            this.panel3.Controls.Add(this.radioButton9);
-            this.panel3.Controls.Add(this.radioButton8);
-            this.panel3.Controls.Add(this.radioButton7);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(166, 9);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(93, 99);
-            this.panel3.TabIndex = 6;
+            this.AgePanel.Controls.Add(this.Adults);
+            this.AgePanel.Controls.Add(this.Children);
+            this.AgePanel.Controls.Add(this.All);
+            this.AgePanel.Controls.Add(this.label3);
+            this.AgePanel.Location = new System.Drawing.Point(166, 9);
+            this.AgePanel.Name = "AgePanel";
+            this.AgePanel.Size = new System.Drawing.Size(93, 99);
+            this.AgePanel.TabIndex = 6;
             // 
-            // radioButton9
+            // Adults
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(4, 74);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(54, 17);
-            this.radioButton9.TabIndex = 3;
-            this.radioButton9.Text = "Adults";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.Adults.AutoSize = true;
+            this.Adults.Location = new System.Drawing.Point(4, 74);
+            this.Adults.Name = "Adults";
+            this.Adults.Size = new System.Drawing.Size(54, 17);
+            this.Adults.TabIndex = 3;
+            this.Adults.Text = "Adults";
+            this.Adults.UseVisualStyleBackColor = true;
             // 
-            // radioButton8
+            // Children
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(4, 50);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(63, 17);
-            this.radioButton8.TabIndex = 2;
-            this.radioButton8.Text = "Children";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.Children.AutoSize = true;
+            this.Children.Location = new System.Drawing.Point(4, 50);
+            this.Children.Name = "Children";
+            this.Children.Size = new System.Drawing.Size(63, 17);
+            this.Children.TabIndex = 2;
+            this.Children.Text = "Children";
+            this.Children.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // All
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(4, 26);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(36, 17);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "All";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.All.AutoSize = true;
+            this.All.Checked = true;
+            this.All.Location = new System.Drawing.Point(4, 26);
+            this.All.Name = "All";
+            this.All.Size = new System.Drawing.Size(36, 17);
+            this.All.TabIndex = 1;
+            this.All.TabStop = true;
+            this.All.Text = "All";
+            this.All.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -278,14 +278,14 @@
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.RankPanel);
             this.Controls.Add(this.GenderPanel);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.AgePanel);
             this.Controls.Add(this.resultsPanel);
             this.Name = "SearchForm";
             this.Text = "TKD Emailer";
             this.GenderPanel.ResumeLayout(false);
             this.GenderPanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.AgePanel.ResumeLayout(false);
+            this.AgePanel.PerformLayout();
             this.RankPanel.ResumeLayout(false);
             this.RankPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).EndInit();
@@ -301,16 +301,16 @@
         private System.Windows.Forms.Panel resultsPanel;
         private System.Windows.Forms.Panel GenderPanel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel AgePanel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel RankPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton MaleRadioButton;
         private System.Windows.Forms.RadioButton FemaleRadioButton;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton Adults;
+        private System.Windows.Forms.RadioButton Children;
+        private System.Windows.Forms.RadioButton All;
         private System.Windows.Forms.RadioButton BlackBeltsRadioButton;
         private System.Windows.Forms.RadioButton ColorBeltsRadioButton;
         private System.Windows.Forms.RadioButton radioButton4;
