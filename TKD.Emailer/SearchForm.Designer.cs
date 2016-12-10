@@ -46,14 +46,17 @@
             this.ColorBeltsRadioButton = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.categoryPanel = new System.Windows.Forms.Panel();
+            this.categoryLabel = new System.Windows.Forms.Label();
+            this.categoryCancelled = new System.Windows.Forms.RadioButton();
+            this.categoryStudents = new System.Windows.Forms.RadioButton();
+            this.categoryAll = new System.Windows.Forms.RadioButton();
             this.dbServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SendEmailToSelectedPanel = new System.Windows.Forms.Panel();
             this.GenderPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.RankPanel.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.categoryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +64,7 @@
             // 
             this.searchButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.searchButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchButton.Location = new System.Drawing.Point(12, 146);
+            this.searchButton.Location = new System.Drawing.Point(527, 148);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(100, 20);
             this.searchButton.TabIndex = 2;
@@ -71,7 +74,7 @@
             // 
             // resultsPanel
             // 
-            this.resultsPanel.Location = new System.Drawing.Point(2, 183);
+            this.resultsPanel.Location = new System.Drawing.Point(2, 206);
             this.resultsPanel.Name = "resultsPanel";
             this.resultsPanel.Size = new System.Drawing.Size(775, 191);
             this.resultsPanel.TabIndex = 4;
@@ -82,9 +85,9 @@
             this.GenderPanel.Controls.Add(this.FemaleRadioButton);
             this.GenderPanel.Controls.Add(this.radioButton1);
             this.GenderPanel.Controls.Add(this.label2);
-            this.GenderPanel.Location = new System.Drawing.Point(12, 10);
+            this.GenderPanel.Location = new System.Drawing.Point(12, 101);
             this.GenderPanel.Name = "GenderPanel";
-            this.GenderPanel.Size = new System.Drawing.Size(128, 100);
+            this.GenderPanel.Size = new System.Drawing.Size(128, 99);
             this.GenderPanel.TabIndex = 5;
             // 
             // MaleRadioButton
@@ -232,27 +235,61 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Rank (Belt)";
             // 
-            // panel5
+            // categoryPanel
             // 
-            this.panel5.Controls.Add(this.checkBox1);
-            this.panel5.Location = new System.Drawing.Point(12, 116);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 24);
-            this.panel5.TabIndex = 8;
+            this.categoryPanel.Controls.Add(this.categoryLabel);
+            this.categoryPanel.Controls.Add(this.categoryCancelled);
+            this.categoryPanel.Controls.Add(this.categoryStudents);
+            this.categoryPanel.Controls.Add(this.categoryAll);
+            this.categoryPanel.Location = new System.Drawing.Point(12, 10);
+            this.categoryPanel.Name = "categoryPanel";
+            this.categoryPanel.Size = new System.Drawing.Size(128, 85);
+            this.categoryPanel.TabIndex = 8;
             // 
-            // checkBox1
+            // categoryLabel
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 4);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(192, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Include Salutation (\"Dear Mr.\", etc)";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.categoryLabel.AutoSize = true;
+            this.categoryLabel.Location = new System.Drawing.Point(9, 5);
+            this.categoryLabel.Name = "categoryLabel";
+            this.categoryLabel.Size = new System.Drawing.Size(49, 13);
+            this.categoryLabel.TabIndex = 3;
+            this.categoryLabel.Text = "Category";
+            // 
+            // categoryCancelled
+            // 
+            this.categoryCancelled.AutoSize = true;
+            this.categoryCancelled.Location = new System.Drawing.Point(12, 65);
+            this.categoryCancelled.Name = "categoryCancelled";
+            this.categoryCancelled.Size = new System.Drawing.Size(72, 17);
+            this.categoryCancelled.TabIndex = 2;
+            this.categoryCancelled.Text = "Cancelled";
+            this.categoryCancelled.UseVisualStyleBackColor = true;
+            // 
+            // categoryStudents
+            // 
+            this.categoryStudents.AutoSize = true;
+            this.categoryStudents.Location = new System.Drawing.Point(13, 42);
+            this.categoryStudents.Name = "categoryStudents";
+            this.categoryStudents.Size = new System.Drawing.Size(67, 17);
+            this.categoryStudents.TabIndex = 1;
+            this.categoryStudents.Text = "Students";
+            this.categoryStudents.UseVisualStyleBackColor = true;
+            // 
+            // categoryAll
+            // 
+            this.categoryAll.AutoSize = true;
+            this.categoryAll.Checked = true;
+            this.categoryAll.Location = new System.Drawing.Point(13, 19);
+            this.categoryAll.Name = "categoryAll";
+            this.categoryAll.Size = new System.Drawing.Size(36, 17);
+            this.categoryAll.TabIndex = 0;
+            this.categoryAll.TabStop = true;
+            this.categoryAll.Text = "All";
+            this.categoryAll.UseVisualStyleBackColor = true;
             // 
             // SendEmailToSelectedPanel
             // 
-            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(2, 380);
+            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(2, 403);
             this.SendEmailToSelectedPanel.Name = "SendEmailToSelectedPanel";
             this.SendEmailToSelectedPanel.Size = new System.Drawing.Size(200, 37);
             this.SendEmailToSelectedPanel.TabIndex = 9;
@@ -261,13 +298,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 429);
+            this.ClientSize = new System.Drawing.Size(789, 452);
             this.Controls.Add(this.SendEmailToSelectedPanel);
-            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.categoryPanel);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.RankPanel);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.GenderPanel);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.resultsPanel);
             this.Name = "SearchForm";
             this.Text = "TKD Emailer";
@@ -277,8 +314,8 @@
             this.panel3.PerformLayout();
             this.RankPanel.ResumeLayout(false);
             this.RankPanel.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.categoryPanel.ResumeLayout(false);
+            this.categoryPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -294,7 +331,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel RankPanel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel categoryPanel;
         private System.Windows.Forms.RadioButton MaleRadioButton;
         private System.Windows.Forms.RadioButton FemaleRadioButton;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -304,8 +341,11 @@
         private System.Windows.Forms.RadioButton BlackBeltsRadioButton;
         private System.Windows.Forms.RadioButton ColorBeltsRadioButton;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Panel SendEmailToSelectedPanel;
+        private System.Windows.Forms.Label categoryLabel;
+        private System.Windows.Forms.RadioButton categoryCancelled;
+        private System.Windows.Forms.RadioButton categoryStudents;
+        private System.Windows.Forms.RadioButton categoryAll;
     }
 }
 
