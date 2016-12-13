@@ -50,7 +50,6 @@
             this.dbServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SendEmailToSelectedPanel = new System.Windows.Forms.Panel();
             this.CategoryPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
             this.RankPanel.SuspendLayout();
@@ -254,25 +253,14 @@
             this.CategoryPanel.Controls.Add(this.categoryLabel);
             this.CategoryPanel.Location = new System.Drawing.Point(13, 9);
             this.CategoryPanel.Name = "CategoryPanel";
-            this.CategoryPanel.Size = new System.Drawing.Size(127, 51);
+            this.CategoryPanel.Size = new System.Drawing.Size(127, 65);
             this.CategoryPanel.TabIndex = 10;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(603, 145);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 41);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "debuggingQuery";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 497);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(564, 497);
             this.Controls.Add(this.CategoryPanel);
             this.Controls.Add(this.SendEmailToSelectedPanel);
             this.Controls.Add(this.searchButton);
@@ -317,7 +305,6 @@
         private System.Windows.Forms.Panel SendEmailToSelectedPanel;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Panel CategoryPanel;
-        private System.Windows.Forms.Button button1;
     }
 }
 

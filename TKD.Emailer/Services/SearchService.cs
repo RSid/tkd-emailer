@@ -16,7 +16,7 @@ SELECT personalprofiles.id,
  personalprofiles.categoryid,
 -DateDiff('yyyy', Now(), personalprofiles.birthday) as Age
 FROM personalprofiles  
-   
+   INNER JOIN ranks ON personalprofiles.NextRank=ranks.name
 WHERE email LIKE '%@%' ";
 
         public SearchService(DbService dbService)
