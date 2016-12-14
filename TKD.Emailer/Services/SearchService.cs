@@ -8,7 +8,7 @@ namespace TKD.Emailer.Services
     {
         private readonly DbService m_dbService;
 
-        private static readonly string SelectSql = $@"
+        private static readonly string LeftJoinSelect = $@"
 SELECT personalprofiles.id, 
     personalprofiles.fname as {FirstNameColumnName}, 
     personalprofiles.lname as {LastNameColumnName}, 
@@ -18,7 +18,20 @@ SELECT personalprofiles.id,
 -DateDiff('yyyy', Now(), personalprofiles.birthday) as Age,
 memberof1
 FROM personalprofiles  
-   INNER JOIN ranks ON personalprofiles.NextRank=ranks.name
+   LEFT JOIN ranks ON personalprofiles.NextRank=ranks.name
+WHERE email LIKE '%@%' ";
+
+private static readonly string RightJoinSelect = $@"
+SELECT personalprofiles.id, 
+    personalprofiles.fname as {FirstNameColumnName}, 
+    personalprofiles.lname as {LastNameColumnName}, 
+    personalprofiles.email as {EmailColumnName}, 
+    personalprofiles.NextRank,
+ personalprofiles.categoryid,
+-DateDiff('yyyy', Now(), personalprofiles.birthday) as Age,
+memberof1
+FROM personalprofiles  
+   RIGHT JOIN ranks ON personalprofiles.NextRank=ranks.name
 WHERE email LIKE '%@%' ";
 
         public SearchService(DbService dbService)
@@ -29,15 +42,22 @@ WHERE email LIKE '%@%' ";
         public string BuildSql(string checkedRankButtonName, int? rankMin, int? rankMax, string checkedGenderButtonName, 
             int? selectedCategoryId, string ageCategoryButtonText, int? ageMin, int? ageMax, string clubMembershipButtonText)
         {
-            var sql = SelectSql;
-            sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
-            sql = ApplyRankSelectors(sql, checkedRankButtonName, rankMin, rankMax);
-            sql = ApplyCategorySelector(sql, selectedCategoryId);
-            sql = ApplyAgeSelector(sql, ageCategoryButtonText, ageMin, ageMax);
-            sql = ApplyMembershipSelectors(sql, clubMembershipButtonText);
+            var leftSql = LeftJoinSelect;
+            leftSql = ApplyGenderSelectors(leftSql, checkedGenderButtonName);
+            leftSql = ApplyRankSelectors(leftSql, checkedRankButtonName, rankMin, rankMax);
+            leftSql = ApplyCategorySelector(leftSql, selectedCategoryId);
+            leftSql = ApplyAgeSelector(leftSql, ageCategoryButtonText, ageMin, ageMax);
+            leftSql = ApplyMembershipSelectors(leftSql, clubMembershipButtonText);
 
-            sql += " ORDER BY lname";
-            return sql;
+            var rightSql = RightJoinSelect;
+            rightSql = ApplyGenderSelectors(rightSql, checkedGenderButtonName);
+            rightSql = ApplyRankSelectors(rightSql, checkedRankButtonName, rankMin, rankMax);
+            rightSql = ApplyCategorySelector(rightSql, selectedCategoryId);
+            rightSql = ApplyAgeSelector(rightSql, ageCategoryButtonText, ageMin, ageMax);
+            rightSql = ApplyMembershipSelectors(rightSql, clubMembershipButtonText);
+
+            var finalSql = $"{leftSql} UNION {rightSql} ORDER BY {LastNameColumnName}";
+            return finalSql;
         }
 
         private string ApplyMembershipSelectors(string sql, string clubMembershipButtonText)
