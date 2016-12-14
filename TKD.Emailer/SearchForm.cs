@@ -22,7 +22,7 @@ namespace TKD.Emailer
         public static string FoundersClubText = "Founders Club";
         public static string ChildrenText = "Children";
         public static string AdultsText = "Adults";
-        public static string AgeRangeText = "Age Range";
+        public static string AgeRangeText = "Age Range (inclusive)";
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
