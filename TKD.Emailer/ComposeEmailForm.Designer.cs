@@ -1,6 +1,6 @@
 ﻿namespace TKD.Emailer
 {
-    partial class ComposeEmail
+    partial class ComposeEmailForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComposeEmailForm));
             this.body = new System.Windows.Forms.RichTextBox();
             this.subject = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.subject);
             this.Controls.Add(this.body);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ComposeEmail";
             this.Text = "ComposeEmail";
             this.ResumeLayout(false);

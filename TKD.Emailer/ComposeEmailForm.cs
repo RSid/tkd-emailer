@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 namespace TKD.Emailer
 {
-    public partial class ComposeEmail : Form
+    public partial class ComposeEmailForm : Form
     {
         public bool CanSendEmail = true;
 
-        public ComposeEmail()
+        public ComposeEmailForm()
         {
             InitializeComponent();
         }

@@ -13,7 +13,7 @@ namespace TKD.Emailer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ComposeEmail());
+            Application.Run(new ComposeEmailForm());
         }
     }
 }

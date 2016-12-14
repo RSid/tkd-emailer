@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchForm));
             this.searchButton = new System.Windows.Forms.Button();
             this.resultsPanel = new System.Windows.Forms.Panel();
             this.GenderPanel = new System.Windows.Forms.Panel();
@@ -51,10 +52,10 @@
             this.SendEmailToSelectedPanel = new System.Windows.Forms.Panel();
             this.CategoryPanel = new System.Windows.Forms.Panel();
             this.MembershipPanel = new System.Windows.Forms.Panel();
-            this.clubLabel = new System.Windows.Forms.Label();
-            this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
-            this.foundersClubButton = new System.Windows.Forms.RadioButton();
             this.allClubsButton = new System.Windows.Forms.RadioButton();
+            this.foundersClubButton = new System.Windows.Forms.RadioButton();
+            this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
+            this.clubLabel = new System.Windows.Forms.Label();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
             this.RankPanel.SuspendLayout();
@@ -273,25 +274,16 @@
             this.MembershipPanel.Size = new System.Drawing.Size(128, 92);
             this.MembershipPanel.TabIndex = 11;
             // 
-            // clubLabel
+            // allClubsButton
             // 
-            this.clubLabel.AutoSize = true;
-            this.clubLabel.Location = new System.Drawing.Point(3, 6);
-            this.clubLabel.Name = "clubLabel";
-            this.clubLabel.Size = new System.Drawing.Size(88, 13);
-            this.clubLabel.TabIndex = 0;
-            this.clubLabel.Text = "Club Membership";
-            // 
-            // blackBeltClubButton
-            // 
-            this.blackBeltClubButton.AutoSize = true;
-            this.blackBeltClubButton.Location = new System.Drawing.Point(7, 45);
-            this.blackBeltClubButton.Name = "blackBeltClubButton";
-            this.blackBeltClubButton.Size = new System.Drawing.Size(97, 17);
-            this.blackBeltClubButton.TabIndex = 1;
-            this.blackBeltClubButton.TabStop = true;
-            this.blackBeltClubButton.Text = "Black Belt Club";
-            this.blackBeltClubButton.UseVisualStyleBackColor = true;
+            this.allClubsButton.AutoSize = true;
+            this.allClubsButton.Location = new System.Drawing.Point(7, 22);
+            this.allClubsButton.Name = "allClubsButton";
+            this.allClubsButton.Size = new System.Drawing.Size(36, 17);
+            this.allClubsButton.TabIndex = 3;
+            this.allClubsButton.TabStop = true;
+            this.allClubsButton.Text = "All";
+            this.allClubsButton.UseVisualStyleBackColor = true;
             // 
             // foundersClubButton
             // 
@@ -304,16 +296,25 @@
             this.foundersClubButton.Text = "Founders Club";
             this.foundersClubButton.UseVisualStyleBackColor = true;
             // 
-            // allClubsButton
+            // blackBeltClubButton
             // 
-            this.allClubsButton.AutoSize = true;
-            this.allClubsButton.Location = new System.Drawing.Point(7, 22);
-            this.allClubsButton.Name = "allClubsButton";
-            this.allClubsButton.Size = new System.Drawing.Size(36, 17);
-            this.allClubsButton.TabIndex = 3;
-            this.allClubsButton.TabStop = true;
-            this.allClubsButton.Text = "All";
-            this.allClubsButton.UseVisualStyleBackColor = true;
+            this.blackBeltClubButton.AutoSize = true;
+            this.blackBeltClubButton.Location = new System.Drawing.Point(7, 45);
+            this.blackBeltClubButton.Name = "blackBeltClubButton";
+            this.blackBeltClubButton.Size = new System.Drawing.Size(97, 17);
+            this.blackBeltClubButton.TabIndex = 1;
+            this.blackBeltClubButton.TabStop = true;
+            this.blackBeltClubButton.Text = "Black Belt Club";
+            this.blackBeltClubButton.UseVisualStyleBackColor = true;
+            // 
+            // clubLabel
+            // 
+            this.clubLabel.AutoSize = true;
+            this.clubLabel.Location = new System.Drawing.Point(3, 6);
+            this.clubLabel.Name = "clubLabel";
+            this.clubLabel.Size = new System.Drawing.Size(88, 13);
+            this.clubLabel.TabIndex = 0;
+            this.clubLabel.Text = "Club Membership";
             // 
             // SearchForm
             // 
@@ -328,6 +329,7 @@
             this.Controls.Add(this.GenderPanel);
             this.Controls.Add(this.AgePanel);
             this.Controls.Add(this.resultsPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SearchForm";
             this.Text = "TKD Emailer";
             this.GenderPanel.ResumeLayout(false);
