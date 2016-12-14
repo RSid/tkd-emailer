@@ -61,6 +61,7 @@
             this.foundersClubButton = new System.Windows.Forms.RadioButton();
             this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
             this.clubLabel = new System.Windows.Forms.Label();
+            this.beltRangeButton = new System.Windows.Forms.RadioButton();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageMaxInput)).BeginInit();
@@ -264,13 +265,14 @@
             // 
             // RankPanel
             // 
+            this.RankPanel.Controls.Add(this.beltRangeButton);
             this.RankPanel.Controls.Add(this.BlackBeltsRadioButton);
             this.RankPanel.Controls.Add(this.ColorBeltsRadioButton);
             this.RankPanel.Controls.Add(this.radioButton4);
             this.RankPanel.Controls.Add(this.label4);
             this.RankPanel.Location = new System.Drawing.Point(285, 10);
             this.RankPanel.Name = "RankPanel";
-            this.RankPanel.Size = new System.Drawing.Size(161, 100);
+            this.RankPanel.Size = new System.Drawing.Size(161, 202);
             this.RankPanel.TabIndex = 7;
             // 
             // BlackBeltsRadioButton
@@ -390,6 +392,17 @@
             this.clubLabel.TabIndex = 0;
             this.clubLabel.Text = "Club Membership";
             // 
+            // beltRangeButton
+            // 
+            this.beltRangeButton.AutoSize = true;
+            this.beltRangeButton.Location = new System.Drawing.Point(6, 98);
+            this.beltRangeButton.Name = "beltRangeButton";
+            this.beltRangeButton.Size = new System.Drawing.Size(78, 17);
+            this.beltRangeButton.TabIndex = 4;
+            this.beltRangeButton.TabStop = true;
+            this.beltRangeButton.Text = "Belt Range";
+            this.beltRangeButton.UseVisualStyleBackColor = true;
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,6 +468,7 @@
         private System.Windows.Forms.NumericUpDown ageMinInput;
         private System.Windows.Forms.Label toLabel;
         private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.RadioButton beltRangeButton;
     }
 }
 

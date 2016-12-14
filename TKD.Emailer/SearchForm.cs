@@ -43,6 +43,8 @@ namespace TKD.Emailer
 
             CreateCategoryDropdown(m_dbService);
             MinAdult = GetMinimumAgeForAdults();
+
+            CreateRankDropdowns(m_dbService);
         }
 
         private int GetMinimumAgeForAdults()
@@ -61,7 +63,6 @@ namespace TKD.Emailer
             allRow["id"] = NoneId;
             categories.Rows.InsertAt(allRow,0);
 
-
             var categoryDropDown = new ComboBox()
             {
                 DataSource = categories,
@@ -74,6 +75,51 @@ namespace TKD.Emailer
             };
 
             CategoryPanel.Controls.Add(categoryDropDown);
+        }
+
+        private void CreateRankDropdowns(DbService dbService)
+        {
+            var toRanks = dbService.GetRankAndOrder();
+            var fromRanks = dbService.GetRankAndOrder();
+            var rankToLabel = new Label
+            {
+                Text = "To",
+                Name = "rankToLabel",
+                Location = new Point(13, 117),
+                Size = new Size(100, 15)
+            };
+            var rankDropDownTo = new ComboBox()
+            {
+                DataSource = toRanks,
+                DisplayMember = "name",
+                ValueMember = "name",
+                Location = new Point(13, 132),
+                Name = CategorySelector,
+                Size = new Size(100, 21),
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            var rankFromLabel = new Label
+            {
+                Text = "From",
+                Name = "rankFromLabel",
+                Location = new Point(13, 154),
+                Size = new Size(100, 15)
+            };
+            var rankDropDownFrom = new ComboBox()
+            {
+                DataSource = fromRanks,
+                DisplayMember = "name",
+                ValueMember = "name",
+                Location = new Point(13, 169),
+                Name = CategorySelector,
+                Size = new Size(100, 21),
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+
+            RankPanel.Controls.Add(rankToLabel);
+            RankPanel.Controls.Add(rankDropDownTo);
+            RankPanel.Controls.Add(rankFromLabel);
+            RankPanel.Controls.Add(rankDropDownFrom);
         }
 
         private void searchButton_Click(object sender, EventArgs e)

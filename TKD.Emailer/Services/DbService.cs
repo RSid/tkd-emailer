@@ -61,13 +61,11 @@ namespace TKD.Emailer.Services
             return dataSet.Tables[0];
         }
 
-        public Dictionary<int, string> GetRankAndOrder()
+        public DataTable GetRankAndOrder()
         {
-            var rankSql = "SELECT name, rorder FROM ranks";
+            const string rankSql = "SELECT name FROM ranks ORDER BY rorder";
             var dataSet = QueryDatabase(rankSql);
-            return dataSet.Tables[0].AsEnumerable()
-      .ToDictionary<DataRow, int, string>(row => row.Field<int>(0),
-                                row => row.Field<string>(1));
+            return dataSet.Tables[0];
         }
     }
 }
