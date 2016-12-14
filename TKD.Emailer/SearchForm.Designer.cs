@@ -56,12 +56,19 @@
             this.foundersClubButton = new System.Windows.Forms.RadioButton();
             this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
             this.clubLabel = new System.Windows.Forms.Label();
+            this.ageRangeButton = new System.Windows.Forms.RadioButton();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.toLabel = new System.Windows.Forms.Label();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
             this.RankPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).BeginInit();
             this.CategoryPanel.SuspendLayout();
             this.MembershipPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // searchButton
@@ -78,9 +85,9 @@
             // 
             // resultsPanel
             // 
-            this.resultsPanel.Location = new System.Drawing.Point(2, 154);
+            this.resultsPanel.Location = new System.Drawing.Point(2, 218);
             this.resultsPanel.Name = "resultsPanel";
-            this.resultsPanel.Size = new System.Drawing.Size(550, 277);
+            this.resultsPanel.Size = new System.Drawing.Size(550, 293);
             this.resultsPanel.TabIndex = 4;
             // 
             // GenderPanel
@@ -137,13 +144,18 @@
             // 
             // AgePanel
             // 
+            this.AgePanel.Controls.Add(this.toLabel);
+            this.AgePanel.Controls.Add(this.fromLabel);
+            this.AgePanel.Controls.Add(this.numericUpDown2);
+            this.AgePanel.Controls.Add(this.numericUpDown1);
+            this.AgePanel.Controls.Add(this.ageRangeButton);
             this.AgePanel.Controls.Add(this.Adults);
             this.AgePanel.Controls.Add(this.Children);
             this.AgePanel.Controls.Add(this.allAgesButton);
             this.AgePanel.Controls.Add(this.label3);
             this.AgePanel.Location = new System.Drawing.Point(146, 10);
             this.AgePanel.Name = "AgePanel";
-            this.AgePanel.Size = new System.Drawing.Size(93, 99);
+            this.AgePanel.Size = new System.Drawing.Size(93, 202);
             this.AgePanel.TabIndex = 6;
             // 
             // Adults
@@ -250,7 +262,7 @@
             // 
             // SendEmailToSelectedPanel
             // 
-            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(2, 437);
+            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(352, 517);
             this.SendEmailToSelectedPanel.Name = "SendEmailToSelectedPanel";
             this.SendEmailToSelectedPanel.Size = new System.Drawing.Size(200, 37);
             this.SendEmailToSelectedPanel.TabIndex = 9;
@@ -316,11 +328,54 @@
             this.clubLabel.TabIndex = 0;
             this.clubLabel.Text = "Club Membership";
             // 
+            // ageRangeButton
+            // 
+            this.ageRangeButton.AutoSize = true;
+            this.ageRangeButton.Location = new System.Drawing.Point(4, 98);
+            this.ageRangeButton.Name = "ageRangeButton";
+            this.ageRangeButton.Size = new System.Drawing.Size(79, 17);
+            this.ageRangeButton.TabIndex = 4;
+            this.ageRangeButton.TabStop = true;
+            this.ageRangeButton.Text = "Age Range";
+            this.ageRangeButton.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(23, 134);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown1.TabIndex = 5;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(23, 173);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDown2.TabIndex = 6;
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(21, 118);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(30, 13);
+            this.fromLabel.TabIndex = 7;
+            this.fromLabel.Text = "From";
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(21, 157);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(20, 13);
+            this.toLabel.TabIndex = 8;
+            this.toLabel.Text = "To";
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 497);
+            this.ClientSize = new System.Drawing.Size(564, 566);
             this.Controls.Add(this.MembershipPanel);
             this.Controls.Add(this.CategoryPanel);
             this.Controls.Add(this.SendEmailToSelectedPanel);
@@ -343,6 +398,8 @@
             this.CategoryPanel.PerformLayout();
             this.MembershipPanel.ResumeLayout(false);
             this.MembershipPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -374,6 +431,11 @@
         private System.Windows.Forms.RadioButton blackBeltClubButton;
         private System.Windows.Forms.Label clubLabel;
         private System.Windows.Forms.RadioButton allClubsButton;
+        private System.Windows.Forms.RadioButton ageRangeButton;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.Label fromLabel;
     }
 }
 
