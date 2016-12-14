@@ -20,6 +20,9 @@ namespace TKD.Emailer
         public static int MinAdult;
         public static string BlackBeltClubText = "Black Belt Club";
         public static string FoundersClubText = "Founders Club";
+        public static string ChildrenText = "Children";
+        public static string AdultsText = "Adults";
+        public static string AgeRangeText = "Age Range";
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
@@ -84,14 +87,26 @@ namespace TKD.Emailer
             var selectedCategoryValue = CategoryPanel.Controls.OfType<ComboBox>()
                 .Single().SelectedValue as int?;
 
+            int? ageMin = null;
+            int? ageMax = null;
             var ageCategoryButtonText = AgePanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Text;
+
+            if (ageCategoryButtonText == AgeRangeText)
+            {
+                ageMin = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
+                    .Single(numeric => numeric.Name == "ageMinInput")
+                    .Value);
+                ageMax = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
+                    .Single(numeric => numeric.Name == "ageMaxInput")
+                    .Value);
+            }
 
             var clubMembershipButtonText = MembershipPanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Text;
 
             var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName,
-                selectedCategoryValue, ageCategoryButtonText, clubMembershipButtonText);
+                selectedCategoryValue, ageCategoryButtonText, ageMin, ageMax, clubMembershipButtonText);
             var grid = m_searchService.Search(sql);
 
             AddSendEmailButton();

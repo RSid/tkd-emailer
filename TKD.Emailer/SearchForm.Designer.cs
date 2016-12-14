@@ -38,6 +38,11 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.AgePanel = new System.Windows.Forms.Panel();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.ageMaxInput = new System.Windows.Forms.NumericUpDown();
+            this.ageMinInput = new System.Windows.Forms.NumericUpDown();
+            this.ageRangeButton = new System.Windows.Forms.RadioButton();
             this.Adults = new System.Windows.Forms.RadioButton();
             this.Children = new System.Windows.Forms.RadioButton();
             this.allAgesButton = new System.Windows.Forms.RadioButton();
@@ -56,19 +61,14 @@
             this.foundersClubButton = new System.Windows.Forms.RadioButton();
             this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
             this.clubLabel = new System.Windows.Forms.Label();
-            this.ageRangeButton = new System.Windows.Forms.RadioButton();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.fromLabel = new System.Windows.Forms.Label();
-            this.toLabel = new System.Windows.Forms.Label();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ageMaxInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageMinInput)).BeginInit();
             this.RankPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).BeginInit();
             this.CategoryPanel.SuspendLayout();
             this.MembershipPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // searchButton
@@ -96,9 +96,9 @@
             this.GenderPanel.Controls.Add(this.FemaleRadioButton);
             this.GenderPanel.Controls.Add(this.radioButton1);
             this.GenderPanel.Controls.Add(this.label2);
-            this.GenderPanel.Location = new System.Drawing.Point(424, 10);
+            this.GenderPanel.Location = new System.Drawing.Point(452, 10);
             this.GenderPanel.Name = "GenderPanel";
-            this.GenderPanel.Size = new System.Drawing.Size(128, 99);
+            this.GenderPanel.Size = new System.Drawing.Size(100, 99);
             this.GenderPanel.TabIndex = 5;
             // 
             // MaleRadioButton
@@ -146,8 +146,8 @@
             // 
             this.AgePanel.Controls.Add(this.toLabel);
             this.AgePanel.Controls.Add(this.fromLabel);
-            this.AgePanel.Controls.Add(this.numericUpDown2);
-            this.AgePanel.Controls.Add(this.numericUpDown1);
+            this.AgePanel.Controls.Add(this.ageMaxInput);
+            this.AgePanel.Controls.Add(this.ageMinInput);
             this.AgePanel.Controls.Add(this.ageRangeButton);
             this.AgePanel.Controls.Add(this.Adults);
             this.AgePanel.Controls.Add(this.Children);
@@ -155,8 +155,71 @@
             this.AgePanel.Controls.Add(this.label3);
             this.AgePanel.Location = new System.Drawing.Point(146, 10);
             this.AgePanel.Name = "AgePanel";
-            this.AgePanel.Size = new System.Drawing.Size(93, 202);
+            this.AgePanel.Size = new System.Drawing.Size(137, 202);
             this.AgePanel.TabIndex = 6;
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(21, 157);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(20, 13);
+            this.toLabel.TabIndex = 8;
+            this.toLabel.Text = "To";
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(21, 118);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(30, 13);
+            this.fromLabel.TabIndex = 7;
+            this.fromLabel.Text = "From";
+            // 
+            // ageMaxInput
+            // 
+            this.ageMaxInput.Location = new System.Drawing.Point(23, 173);
+            this.ageMaxInput.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.ageMaxInput.Name = "ageMaxInput";
+            this.ageMaxInput.Size = new System.Drawing.Size(60, 20);
+            this.ageMaxInput.TabIndex = 6;
+            this.ageMaxInput.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // ageMinInput
+            // 
+            this.ageMinInput.Location = new System.Drawing.Point(23, 134);
+            this.ageMinInput.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.ageMinInput.Name = "ageMinInput";
+            this.ageMinInput.Size = new System.Drawing.Size(60, 20);
+            this.ageMinInput.TabIndex = 5;
+            this.ageMinInput.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // ageRangeButton
+            // 
+            this.ageRangeButton.AutoSize = true;
+            this.ageRangeButton.Location = new System.Drawing.Point(4, 98);
+            this.ageRangeButton.Name = "ageRangeButton";
+            this.ageRangeButton.Size = new System.Drawing.Size(129, 17);
+            this.ageRangeButton.TabIndex = 4;
+            this.ageRangeButton.TabStop = true;
+            this.ageRangeButton.Text = "Age Range (inclusive)";
+            this.ageRangeButton.UseVisualStyleBackColor = true;
             // 
             // Adults
             // 
@@ -205,9 +268,9 @@
             this.RankPanel.Controls.Add(this.ColorBeltsRadioButton);
             this.RankPanel.Controls.Add(this.radioButton4);
             this.RankPanel.Controls.Add(this.label4);
-            this.RankPanel.Location = new System.Drawing.Point(245, 10);
+            this.RankPanel.Location = new System.Drawing.Point(285, 10);
             this.RankPanel.Name = "RankPanel";
-            this.RankPanel.Size = new System.Drawing.Size(173, 100);
+            this.RankPanel.Size = new System.Drawing.Size(161, 100);
             this.RankPanel.TabIndex = 7;
             // 
             // BlackBeltsRadioButton
@@ -234,12 +297,12 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Checked = true;
-            this.radioButton4.Location = new System.Drawing.Point(4, 27);
+            this.radioButton4.Location = new System.Drawing.Point(4, 19);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(168, 17);
+            this.radioButton4.Size = new System.Drawing.Size(154, 30);
             this.radioButton4.TabIndex = 1;
             this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "All (includes no recorded rank)";
+            this.radioButton4.Text = "All \r\n(includes no recorded rank)";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -327,69 +390,6 @@
             this.clubLabel.TabIndex = 0;
             this.clubLabel.Text = "Club Membership";
             // 
-            // ageRangeButton
-            // 
-            this.ageRangeButton.AutoSize = true;
-            this.ageRangeButton.Location = new System.Drawing.Point(4, 98);
-            this.ageRangeButton.Name = "ageRangeButton";
-            this.ageRangeButton.Size = new System.Drawing.Size(79, 17);
-            this.ageRangeButton.TabIndex = 4;
-            this.ageRangeButton.TabStop = true;
-            this.ageRangeButton.Text = "Age Range";
-            this.ageRangeButton.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(23, 134);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(23, 173);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(60, 20);
-            this.numericUpDown2.TabIndex = 6;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // fromLabel
-            // 
-            this.fromLabel.AutoSize = true;
-            this.fromLabel.Location = new System.Drawing.Point(21, 118);
-            this.fromLabel.Name = "fromLabel";
-            this.fromLabel.Size = new System.Drawing.Size(30, 13);
-            this.fromLabel.TabIndex = 7;
-            this.fromLabel.Text = "From";
-            // 
-            // toLabel
-            // 
-            this.toLabel.AutoSize = true;
-            this.toLabel.Location = new System.Drawing.Point(21, 157);
-            this.toLabel.Name = "toLabel";
-            this.toLabel.Size = new System.Drawing.Size(20, 13);
-            this.toLabel.TabIndex = 8;
-            this.toLabel.Text = "To";
-            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,6 +410,8 @@
             this.GenderPanel.PerformLayout();
             this.AgePanel.ResumeLayout(false);
             this.AgePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ageMaxInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageMinInput)).EndInit();
             this.RankPanel.ResumeLayout(false);
             this.RankPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).EndInit();
@@ -417,8 +419,6 @@
             this.CategoryPanel.PerformLayout();
             this.MembershipPanel.ResumeLayout(false);
             this.MembershipPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -451,8 +451,8 @@
         private System.Windows.Forms.Label clubLabel;
         private System.Windows.Forms.RadioButton allClubsButton;
         private System.Windows.Forms.RadioButton ageRangeButton;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown ageMaxInput;
+        private System.Windows.Forms.NumericUpDown ageMinInput;
         private System.Windows.Forms.Label toLabel;
         private System.Windows.Forms.Label fromLabel;
     }

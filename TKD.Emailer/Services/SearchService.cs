@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using static TKD.Emailer.Helpers.DataGridHelper;
 
 namespace TKD.Emailer.Services
@@ -26,13 +27,13 @@ WHERE email LIKE '%@%' ";
         }
 
         public string BuildSql(string checkedRankButtonName, string checkedGenderButtonName, 
-            int? selectedCategoryId, string ageCategoryButtonText, string clubMembershipButtonText)
+            int? selectedCategoryId, string ageCategoryButtonText, int? ageMin, int? ageMax, string clubMembershipButtonText)
         {
             var sql = SelectSql;
             sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
             sql = ApplyRankSelectors(sql, checkedRankButtonName);
             sql = ApplyCategorySelector(sql, selectedCategoryId);
-            sql = ApplyAgeSelector(sql, ageCategoryButtonText);
+            sql = ApplyAgeSelector(sql, ageCategoryButtonText, ageMin, ageMax);
             sql = ApplyMembershipSelectors(sql, clubMembershipButtonText);
 
             sql += " ORDER BY lname";
@@ -61,22 +62,32 @@ WHERE email LIKE '%@%' ";
             return sql;
         }
 
-        private string ApplyAgeSelector(string sql, string ageCategoryButtonText)
+        private string ApplyAgeSelector(string sql, string ageCategoryButtonText, int? ageMin, int? ageMax)
         {
             if (ageCategoryButtonText == SearchForm.AllConstant)
             {
                 return sql;
             }
 
-            if (ageCategoryButtonText == "Children")
+            if (ageCategoryButtonText == SearchForm.ChildrenText)
             {
                 var ageFilter = $" AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) < {SearchForm.MinAdult}";
                 sql += ageFilter;
             }
 
-            if (ageCategoryButtonText == "Adults")
+            if (ageCategoryButtonText == SearchForm.AdultsText)
             {
                 var ageFilter = $" AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) >= {SearchForm.MinAdult}";
+                sql += ageFilter;
+            }
+
+            if (ageCategoryButtonText == SearchForm.AgeRangeText)
+            {
+                if (ageMin == null || ageMax == null)
+                {
+                    throw new ArgumentException("Invalid input for age range. Please select an integer.");
+                }
+                var ageFilter = $" AND ( (-DateDiff('yyyy', Now(), personalprofiles.birthday)) >= {ageMin} AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) <= {ageMax})";
                 sql += ageFilter;
             }
 
