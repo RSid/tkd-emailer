@@ -341,16 +341,36 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(23, 134);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown1.TabIndex = 5;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(23, 173);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown2.TabIndex = 6;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // fromLabel
             // 
