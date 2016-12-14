@@ -23,6 +23,9 @@ namespace TKD.Emailer
         public static string ChildrenText = "Children";
         public static string AdultsText = "Adults";
         public static string AgeRangeText = "Age Range (inclusive)";
+        public static string BeltRangeText = "Belt Range";
+        private const string RankMaximumSelector = "rankMaximumSelector";
+        private const string RankMinimumSelector = "rankMinimumSelector";
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
@@ -92,9 +95,9 @@ namespace TKD.Emailer
             {
                 DataSource = toRanks,
                 DisplayMember = "name",
-                ValueMember = "name",
+                ValueMember = "rorder",
                 Location = new Point(13, 132),
-                Name = CategorySelector,
+                Name = RankMinimumSelector,
                 Size = new Size(100, 21),
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
@@ -109,9 +112,9 @@ namespace TKD.Emailer
             {
                 DataSource = fromRanks,
                 DisplayMember = "name",
-                ValueMember = "name",
+                ValueMember = "rorder",
                 Location = new Point(13, 169),
-                Name = CategorySelector,
+                Name = RankMaximumSelector,
                 Size = new Size(100, 21),
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
@@ -133,11 +136,12 @@ namespace TKD.Emailer
             var selectedCategoryValue = CategoryPanel.Controls.OfType<ComboBox>()
                 .Single().SelectedValue as int?;
 
-            int? ageMin = null;
-            int? ageMax = null;
+            
             var ageCategoryButtonText = AgePanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Text;
 
+            int? ageMin = null;
+            int? ageMax = null;
             if (ageCategoryButtonText == AgeRangeText)
             {
                 ageMin = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
@@ -148,11 +152,28 @@ namespace TKD.Emailer
                     .Value);
             }
 
+            int? rankMin = null;
+            int? rankMax = null;
+            if (checkedRankButtonName == "beltRangeButton")
+            {
+                rankMin = Convert.ToInt32(RankPanel.Controls.OfType<ComboBox>()
+                    .First(comboBox => comboBox.Name == RankMinimumSelector).SelectedValue);
+                rankMax = Convert.ToInt32(RankPanel.Controls.OfType<ComboBox>()
+                    .First(comboBox => comboBox.Name == RankMaximumSelector).SelectedValue);
+            }
+
             var clubMembershipButtonText = MembershipPanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Text;
 
-            var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName,
-                selectedCategoryValue, ageCategoryButtonText, ageMin, ageMax, clubMembershipButtonText);
+            var sql = m_searchService.BuildSql(checkedRankButtonName, 
+                rankMin,
+                rankMax,
+                checkedGenderButtonName,
+                selectedCategoryValue, 
+                ageCategoryButtonText, 
+                ageMin, 
+                ageMax, 
+                clubMembershipButtonText);
             var grid = m_searchService.Search(sql);
 
             AddSendEmailButton();

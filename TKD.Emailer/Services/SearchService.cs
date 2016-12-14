@@ -26,12 +26,12 @@ WHERE email LIKE '%@%' ";
             m_dbService = dbService;
         }
 
-        public string BuildSql(string checkedRankButtonName, string checkedGenderButtonName, 
+        public string BuildSql(string checkedRankButtonName, int? rankMin, int? rankMax, string checkedGenderButtonName, 
             int? selectedCategoryId, string ageCategoryButtonText, int? ageMin, int? ageMax, string clubMembershipButtonText)
         {
             var sql = SelectSql;
             sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
-            sql = ApplyRankSelectors(sql, checkedRankButtonName);
+            sql = ApplyRankSelectors(sql, checkedRankButtonName, rankMin, rankMax);
             sql = ApplyCategorySelector(sql, selectedCategoryId);
             sql = ApplyAgeSelector(sql, ageCategoryButtonText, ageMin, ageMax);
             sql = ApplyMembershipSelectors(sql, clubMembershipButtonText);
@@ -126,7 +126,7 @@ WHERE email LIKE '%@%' ";
             return sql;
         }
 
-        public string ApplyRankSelectors(string sql, string checkedRankButtonName)
+        public string ApplyRankSelectors(string sql, string checkedRankButtonName, int? rankMin, int? rankMax)
         {
             string rankFilterString = null;
             if (checkedRankButtonName == "ColorBeltsRadioButton")
@@ -137,6 +137,11 @@ WHERE email LIKE '%@%' ";
             {
                 rankFilterString = " AND rorder > 10";
             }
+            if (rankMin != null && rankMax != null)
+            {
+                rankFilterString = $" AND (rorder >= {rankMin} AND rorder <= {rankMax})";
+            }
+
             if (rankFilterString != null)
             {
                 sql += rankFilterString;

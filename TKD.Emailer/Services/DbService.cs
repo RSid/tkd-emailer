@@ -63,7 +63,7 @@ namespace TKD.Emailer.Services
 
         public DataTable GetRankAndOrder()
         {
-            const string rankSql = "SELECT name FROM ranks ORDER BY rorder";
+            const string rankSql = "SELECT name, rorder FROM ranks ORDER BY rorder";
             var dataSet = QueryDatabase(rankSql);
             return dataSet.Tables[0];
         }
