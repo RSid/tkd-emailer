@@ -289,6 +289,7 @@
             // allClubsButton
             // 
             this.allClubsButton.AutoSize = true;
+            this.allClubsButton.Checked = true;
             this.allClubsButton.Location = new System.Drawing.Point(7, 22);
             this.allClubsButton.Name = "allClubsButton";
             this.allClubsButton.Size = new System.Drawing.Size(36, 17);
@@ -304,7 +305,6 @@
             this.foundersClubButton.Name = "foundersClubButton";
             this.foundersClubButton.Size = new System.Drawing.Size(93, 17);
             this.foundersClubButton.TabIndex = 2;
-            this.foundersClubButton.TabStop = true;
             this.foundersClubButton.Text = "Founders Club";
             this.foundersClubButton.UseVisualStyleBackColor = true;
             // 
@@ -315,7 +315,6 @@
             this.blackBeltClubButton.Name = "blackBeltClubButton";
             this.blackBeltClubButton.Size = new System.Drawing.Size(97, 17);
             this.blackBeltClubButton.TabIndex = 1;
-            this.blackBeltClubButton.TabStop = true;
             this.blackBeltClubButton.Text = "Black Belt Club";
             this.blackBeltClubButton.UseVisualStyleBackColor = true;
             // 
