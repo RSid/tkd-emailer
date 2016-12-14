@@ -14,7 +14,8 @@ SELECT personalprofiles.id,
     personalprofiles.email as {EmailColumnName}, 
     personalprofiles.NextRank,
  personalprofiles.categoryid,
--DateDiff('yyyy', Now(), personalprofiles.birthday) as Age
+-DateDiff('yyyy', Now(), personalprofiles.birthday) as Age,
+memberof1
 FROM personalprofiles  
    INNER JOIN ranks ON personalprofiles.NextRank=ranks.name
 WHERE email LIKE '%@%' ";
@@ -25,32 +26,55 @@ WHERE email LIKE '%@%' ";
         }
 
         public string BuildSql(string checkedRankButtonName, string checkedGenderButtonName, 
-            int? selectedCategoryId, string ageCategoryButtonName)
+            int? selectedCategoryId, string ageCategoryButtonText, string clubMembershipButtonText)
         {
             var sql = SelectSql;
             sql = ApplyGenderSelectors(sql, checkedGenderButtonName);
             sql = ApplyRankSelectors(sql, checkedRankButtonName);
             sql = ApplyCategorySelector(sql, selectedCategoryId);
-            sql = ApplyAgeSelector(sql, ageCategoryButtonName);
+            sql = ApplyAgeSelector(sql, ageCategoryButtonText);
+            sql = ApplyMembershipSelectors(sql, clubMembershipButtonText);
 
             sql += " ORDER BY lname";
             return sql;
         }
 
-        private string ApplyAgeSelector(string sql, string ageCategoryButtonName)
+        private string ApplyMembershipSelectors(string sql, string clubMembershipButtonText)
         {
-            if (ageCategoryButtonName == SearchForm.AllConstant)
+            if (clubMembershipButtonText == SearchForm.AllConstant)
             {
                 return sql;
             }
 
-            if (ageCategoryButtonName == "Children")
+            if (clubMembershipButtonText == SearchForm.BlackBeltClubText)
+            {
+                var membershipFilterSql = $" AND memberof1 = '{SearchForm.BlackBeltClubText}'";
+                sql += membershipFilterSql;
+            }
+
+            if (clubMembershipButtonText == SearchForm.FoundersClubText)
+            {
+                var membershipFilterSql = $" AND memberof1 = '{SearchForm.FoundersClubText}'";
+                sql += membershipFilterSql;
+            }
+
+            return sql;
+        }
+
+        private string ApplyAgeSelector(string sql, string ageCategoryButtonText)
+        {
+            if (ageCategoryButtonText == SearchForm.AllConstant)
+            {
+                return sql;
+            }
+
+            if (ageCategoryButtonText == "Children")
             {
                 var ageFilter = $" AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) < {SearchForm.MinAdult}";
                 sql += ageFilter;
             }
 
-            if (ageCategoryButtonName == "Adults")
+            if (ageCategoryButtonText == "Adults")
             {
                 var ageFilter = $" AND (-DateDiff('yyyy', Now(), personalprofiles.birthday)) >= {SearchForm.MinAdult}";
                 sql += ageFilter;

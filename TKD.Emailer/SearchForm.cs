@@ -18,6 +18,8 @@ namespace TKD.Emailer
         private readonly EmailService m_emailService;
         private readonly DbService m_dbService;
         public static int MinAdult;
+        public static string BlackBeltClubText = "Black Belt Club";
+        public static string FoundersClubText = "Founders Club";
 
         private const string ResultsGridName = "SearchResultsGrid";
         private const string SelectedColumnName = "Selected";
@@ -82,11 +84,14 @@ namespace TKD.Emailer
             var selectedCategoryValue = CategoryPanel.Controls.OfType<ComboBox>()
                 .Single().SelectedValue as int?;
 
-            var ageCategoryButtonName = AgePanel.Controls.OfType<RadioButton>()
-                .First(radio => radio.Checked).Name;
+            var ageCategoryButtonText = AgePanel.Controls.OfType<RadioButton>()
+                .First(radio => radio.Checked).Text;
+
+            var clubMembershipButtonText = MembershipPanel.Controls.OfType<RadioButton>()
+                .First(radio => radio.Checked).Text;
 
             var sql = m_searchService.BuildSql(checkedRankButtonName, checkedGenderButtonName,
-                selectedCategoryValue, ageCategoryButtonName);
+                selectedCategoryValue, ageCategoryButtonText, clubMembershipButtonText);
             var grid = m_searchService.Search(sql);
 
             AddSendEmailButton();

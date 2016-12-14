@@ -39,7 +39,7 @@
             this.AgePanel = new System.Windows.Forms.Panel();
             this.Adults = new System.Windows.Forms.RadioButton();
             this.Children = new System.Windows.Forms.RadioButton();
-            this.All = new System.Windows.Forms.RadioButton();
+            this.allAgesButton = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.RankPanel = new System.Windows.Forms.Panel();
             this.BlackBeltsRadioButton = new System.Windows.Forms.RadioButton();
@@ -50,11 +50,17 @@
             this.dbServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SendEmailToSelectedPanel = new System.Windows.Forms.Panel();
             this.CategoryPanel = new System.Windows.Forms.Panel();
+            this.MembershipPanel = new System.Windows.Forms.Panel();
+            this.clubLabel = new System.Windows.Forms.Label();
+            this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
+            this.foundersClubButton = new System.Windows.Forms.RadioButton();
+            this.allClubsButton = new System.Windows.Forms.RadioButton();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
             this.RankPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).BeginInit();
             this.CategoryPanel.SuspendLayout();
+            this.MembershipPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchButton
@@ -71,9 +77,9 @@
             // 
             // resultsPanel
             // 
-            this.resultsPanel.Location = new System.Drawing.Point(2, 145);
+            this.resultsPanel.Location = new System.Drawing.Point(2, 154);
             this.resultsPanel.Name = "resultsPanel";
-            this.resultsPanel.Size = new System.Drawing.Size(550, 286);
+            this.resultsPanel.Size = new System.Drawing.Size(550, 277);
             this.resultsPanel.TabIndex = 4;
             // 
             // GenderPanel
@@ -132,7 +138,7 @@
             // 
             this.AgePanel.Controls.Add(this.Adults);
             this.AgePanel.Controls.Add(this.Children);
-            this.AgePanel.Controls.Add(this.All);
+            this.AgePanel.Controls.Add(this.allAgesButton);
             this.AgePanel.Controls.Add(this.label3);
             this.AgePanel.Location = new System.Drawing.Point(146, 10);
             this.AgePanel.Name = "AgePanel";
@@ -159,17 +165,17 @@
             this.Children.Text = "Children";
             this.Children.UseVisualStyleBackColor = true;
             // 
-            // All
+            // allAgesButton
             // 
-            this.All.AutoSize = true;
-            this.All.Checked = true;
-            this.All.Location = new System.Drawing.Point(4, 26);
-            this.All.Name = "All";
-            this.All.Size = new System.Drawing.Size(36, 17);
-            this.All.TabIndex = 1;
-            this.All.TabStop = true;
-            this.All.Text = "All";
-            this.All.UseVisualStyleBackColor = true;
+            this.allAgesButton.AutoSize = true;
+            this.allAgesButton.Checked = true;
+            this.allAgesButton.Location = new System.Drawing.Point(4, 26);
+            this.allAgesButton.Name = "allAgesButton";
+            this.allAgesButton.Size = new System.Drawing.Size(36, 17);
+            this.allAgesButton.TabIndex = 1;
+            this.allAgesButton.TabStop = true;
+            this.allAgesButton.Text = "All";
+            this.allAgesButton.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -253,14 +259,68 @@
             this.CategoryPanel.Controls.Add(this.categoryLabel);
             this.CategoryPanel.Location = new System.Drawing.Point(13, 9);
             this.CategoryPanel.Name = "CategoryPanel";
-            this.CategoryPanel.Size = new System.Drawing.Size(127, 65);
+            this.CategoryPanel.Size = new System.Drawing.Size(127, 41);
             this.CategoryPanel.TabIndex = 10;
+            // 
+            // MembershipPanel
+            // 
+            this.MembershipPanel.Controls.Add(this.allClubsButton);
+            this.MembershipPanel.Controls.Add(this.foundersClubButton);
+            this.MembershipPanel.Controls.Add(this.blackBeltClubButton);
+            this.MembershipPanel.Controls.Add(this.clubLabel);
+            this.MembershipPanel.Location = new System.Drawing.Point(13, 56);
+            this.MembershipPanel.Name = "MembershipPanel";
+            this.MembershipPanel.Size = new System.Drawing.Size(128, 92);
+            this.MembershipPanel.TabIndex = 11;
+            // 
+            // clubLabel
+            // 
+            this.clubLabel.AutoSize = true;
+            this.clubLabel.Location = new System.Drawing.Point(3, 6);
+            this.clubLabel.Name = "clubLabel";
+            this.clubLabel.Size = new System.Drawing.Size(88, 13);
+            this.clubLabel.TabIndex = 0;
+            this.clubLabel.Text = "Club Membership";
+            // 
+            // blackBeltClubButton
+            // 
+            this.blackBeltClubButton.AutoSize = true;
+            this.blackBeltClubButton.Location = new System.Drawing.Point(7, 45);
+            this.blackBeltClubButton.Name = "blackBeltClubButton";
+            this.blackBeltClubButton.Size = new System.Drawing.Size(97, 17);
+            this.blackBeltClubButton.TabIndex = 1;
+            this.blackBeltClubButton.TabStop = true;
+            this.blackBeltClubButton.Text = "Black Belt Club";
+            this.blackBeltClubButton.UseVisualStyleBackColor = true;
+            // 
+            // foundersClubButton
+            // 
+            this.foundersClubButton.AutoSize = true;
+            this.foundersClubButton.Location = new System.Drawing.Point(7, 68);
+            this.foundersClubButton.Name = "foundersClubButton";
+            this.foundersClubButton.Size = new System.Drawing.Size(93, 17);
+            this.foundersClubButton.TabIndex = 2;
+            this.foundersClubButton.TabStop = true;
+            this.foundersClubButton.Text = "Founders Club";
+            this.foundersClubButton.UseVisualStyleBackColor = true;
+            // 
+            // allClubsButton
+            // 
+            this.allClubsButton.AutoSize = true;
+            this.allClubsButton.Location = new System.Drawing.Point(7, 22);
+            this.allClubsButton.Name = "allClubsButton";
+            this.allClubsButton.Size = new System.Drawing.Size(36, 17);
+            this.allClubsButton.TabIndex = 3;
+            this.allClubsButton.TabStop = true;
+            this.allClubsButton.Text = "All";
+            this.allClubsButton.UseVisualStyleBackColor = true;
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 497);
+            this.Controls.Add(this.MembershipPanel);
             this.Controls.Add(this.CategoryPanel);
             this.Controls.Add(this.SendEmailToSelectedPanel);
             this.Controls.Add(this.searchButton);
@@ -279,6 +339,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceBindingSource)).EndInit();
             this.CategoryPanel.ResumeLayout(false);
             this.CategoryPanel.PerformLayout();
+            this.MembershipPanel.ResumeLayout(false);
+            this.MembershipPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -298,13 +360,18 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton Adults;
         private System.Windows.Forms.RadioButton Children;
-        private System.Windows.Forms.RadioButton All;
+        private System.Windows.Forms.RadioButton allAgesButton;
         private System.Windows.Forms.RadioButton BlackBeltsRadioButton;
         private System.Windows.Forms.RadioButton ColorBeltsRadioButton;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Panel SendEmailToSelectedPanel;
         private System.Windows.Forms.Label categoryLabel;
         private System.Windows.Forms.Panel CategoryPanel;
+        private System.Windows.Forms.Panel MembershipPanel;
+        private System.Windows.Forms.RadioButton foundersClubButton;
+        private System.Windows.Forms.RadioButton blackBeltClubButton;
+        private System.Windows.Forms.Label clubLabel;
+        private System.Windows.Forms.RadioButton allClubsButton;
     }
 }
 
