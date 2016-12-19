@@ -48,6 +48,7 @@
             this.allAgesButton = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.RankPanel = new System.Windows.Forms.Panel();
+            this.beltRangeButton = new System.Windows.Forms.RadioButton();
             this.BlackBeltsRadioButton = new System.Windows.Forms.RadioButton();
             this.ColorBeltsRadioButton = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -61,7 +62,6 @@
             this.foundersClubButton = new System.Windows.Forms.RadioButton();
             this.blackBeltClubButton = new System.Windows.Forms.RadioButton();
             this.clubLabel = new System.Windows.Forms.Label();
-            this.beltRangeButton = new System.Windows.Forms.RadioButton();
             this.GenderPanel.SuspendLayout();
             this.AgePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageMaxInput)).BeginInit();
@@ -275,6 +275,17 @@
             this.RankPanel.Size = new System.Drawing.Size(161, 202);
             this.RankPanel.TabIndex = 7;
             // 
+            // beltRangeButton
+            // 
+            this.beltRangeButton.AutoSize = true;
+            this.beltRangeButton.Location = new System.Drawing.Point(6, 98);
+            this.beltRangeButton.Name = "beltRangeButton";
+            this.beltRangeButton.Size = new System.Drawing.Size(78, 17);
+            this.beltRangeButton.TabIndex = 4;
+            this.beltRangeButton.TabStop = true;
+            this.beltRangeButton.Text = "Belt Range";
+            this.beltRangeButton.UseVisualStyleBackColor = true;
+            // 
             // BlackBeltsRadioButton
             // 
             this.BlackBeltsRadioButton.AutoSize = true;
@@ -327,9 +338,9 @@
             // 
             // SendEmailToSelectedPanel
             // 
-            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(352, 517);
+            this.SendEmailToSelectedPanel.Location = new System.Drawing.Point(402, 517);
             this.SendEmailToSelectedPanel.Name = "SendEmailToSelectedPanel";
-            this.SendEmailToSelectedPanel.Size = new System.Drawing.Size(200, 37);
+            this.SendEmailToSelectedPanel.Size = new System.Drawing.Size(150, 37);
             this.SendEmailToSelectedPanel.TabIndex = 9;
             // 
             // CategoryPanel
@@ -391,17 +402,6 @@
             this.clubLabel.Size = new System.Drawing.Size(88, 13);
             this.clubLabel.TabIndex = 0;
             this.clubLabel.Text = "Club Membership";
-            // 
-            // beltRangeButton
-            // 
-            this.beltRangeButton.AutoSize = true;
-            this.beltRangeButton.Location = new System.Drawing.Point(6, 98);
-            this.beltRangeButton.Name = "beltRangeButton";
-            this.beltRangeButton.Size = new System.Drawing.Size(78, 17);
-            this.beltRangeButton.TabIndex = 4;
-            this.beltRangeButton.TabStop = true;
-            this.beltRangeButton.Text = "Belt Range";
-            this.beltRangeButton.UseVisualStyleBackColor = true;
             // 
             // SearchForm
             // 

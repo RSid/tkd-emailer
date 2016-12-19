@@ -221,7 +221,8 @@ namespace TKD.Emailer
             var sendButton = new Button
             {
                 Name = "SendResultsToSelected",
-                Text = "Send to selected recipients"
+                Text = "Send to selected recipients",
+                Width = 150
             };
             sendButton.Click += SendResultsToSelectedButton_Click;
             SendEmailToSelectedPanel.Controls.Add(sendButton);
