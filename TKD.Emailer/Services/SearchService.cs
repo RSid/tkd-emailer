@@ -9,27 +9,25 @@ namespace TKD.Emailer.Services
         private readonly DbService m_dbService;
 
         private static readonly string LeftJoinSelect = $@"
-SELECT personalprofiles.id, 
+SELECT 
     personalprofiles.fname as {FirstNameColumnName}, 
     personalprofiles.lname as {LastNameColumnName}, 
     personalprofiles.email as {EmailColumnName}, 
     personalprofiles.NextRank,
- personalprofiles.categoryid,
 -DateDiff('yyyy', Now(), personalprofiles.birthday) as Age,
-memberof1
+memberof1 as Club_Membership
 FROM personalprofiles  
    LEFT JOIN ranks ON personalprofiles.NextRank=ranks.name
 WHERE email LIKE '%@%' ";
 
 private static readonly string RightJoinSelect = $@"
-SELECT personalprofiles.id, 
+SELECT  
     personalprofiles.fname as {FirstNameColumnName}, 
     personalprofiles.lname as {LastNameColumnName}, 
     personalprofiles.email as {EmailColumnName}, 
     personalprofiles.NextRank,
- personalprofiles.categoryid,
 -DateDiff('yyyy', Now(), personalprofiles.birthday) as Age,
-memberof1
+memberof1 as Club_Membership
 FROM personalprofiles  
    RIGHT JOIN ranks ON personalprofiles.NextRank=ranks.name
 WHERE email LIKE '%@%' ";
