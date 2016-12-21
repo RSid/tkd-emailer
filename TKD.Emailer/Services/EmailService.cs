@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using NetOffice.OutlookApi.Enums;
 using TKD.Emailer.Dtos;
 using TKD.Emailer.Models;
@@ -19,20 +17,11 @@ namespace TKD.Emailer.Services
                 Errors = new List<ErrorDTO>()
             };
 
-            var ol = GetOutlookIfRunning();
-
             try
             {
-                var outlookApplication = ol ?? new Outlook.Application();
+                var outlookApplication = new Outlook.Application();
                 var mailItem = BuildMail(recipientDtos, subject, body, outlookApplication);
                 mailItem.Send();
-
-                //Quits outlook if it wasn't running before we ran this program
-                if (ol == null)
-                {
-                    outlookApplication.Quit();
-                    outlookApplication.Dispose();
-                }
             }
             catch (ArgumentException ex)
             {
@@ -45,17 +34,6 @@ namespace TKD.Emailer.Services
             }
 
             return result;
-        }
-
-        private static Outlook.Application GetOutlookIfRunning()
-        {
-            var runningOutlookProcesses = Process.GetProcessesByName("OUTLOOK");
-            Outlook.Application ol = null;
-            if (runningOutlookProcesses.Length > 0)
-            {
-                ol = (Outlook.Application) Marshal.GetActiveObject("Outlook.Application");
-            }
-            return ol;
         }
 
         private static Outlook.MailItem BuildMail(IEnumerable<EmailRecipientDTO> recipientDtos, string subject, string body, Outlook.Application outlookApplication)
