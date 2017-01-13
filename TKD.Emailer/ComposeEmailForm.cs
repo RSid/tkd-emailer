@@ -61,5 +61,10 @@ namespace TKD.Emailer
                 newForm.Visible = true;
             }
         }
+
+        private void iconAttributionLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://creativemarket.com/web-app-icons");
+        }
     }
 }
