@@ -41,8 +41,10 @@ namespace TKD.Emailer.Services
 
             foreach (var emailRecipientDTO in recipientDtos)
             {
-                mailItem.Recipients.Add(emailRecipientDTO.Email);
+                var recipientToBCC = mailItem.Recipients.Add(emailRecipientDTO.Email);
+                recipientToBCC.Type = (int)OlMailRecipientType.olBCC;
             }
+            mailItem.Recipients.ResolveAll();
             mailItem.Subject = subject;
             mailItem.Body = body;
             return mailItem;
