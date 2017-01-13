@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using NetOffice.OutlookApi.Enums;
 using TKD.Emailer.Dtos;
 using TKD.Emailer.Models;
@@ -40,9 +39,10 @@ namespace TKD.Emailer.Services
         {
             var mailItem = outlookApplication.CreateItem(OlItemType.olMailItem) as Outlook.MailItem;
 
-            var recipientEmails = string.Join(";", recipientDtos.Select(recipient => recipient.Email));
-
-            mailItem.Recipients.Add(recipientEmails);
+            foreach (var emailRecipientDTO in recipientDtos)
+            {
+                mailItem.Recipients.Add(emailRecipientDTO.Email);
+            }
             mailItem.Subject = subject;
             mailItem.Body = body;
             return mailItem;
