@@ -231,13 +231,23 @@ namespace TKD.Emailer
         private void StyleResultsGrid(DataGridView grid)
         {
             AddSelectorColumn(grid);
-
+            grid.SelectionChanged += SelectionChange;
+            grid.CurrentCell = null;
             grid.AllowUserToResizeColumns = true;
             grid.RowHeadersVisible = false;
             grid.AllowUserToResizeRows = true;
             grid.Name = ResultsGridName;
             grid.Dock = DockStyle.Fill;
             grid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+        private static void SelectionChange(object sender, EventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            var selectedRow = grid.CurrentRow;
+            var checkboxCellForRow = selectedRow.Cells[0];
+            checkboxCellForRow.Selected = true;
+            checkboxCellForRow.Value = true;
         }
 
         private void AddSelectorColumn(DataGridView grid)
