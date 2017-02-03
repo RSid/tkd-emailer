@@ -30,5 +30,13 @@ namespace TKD.Emailer.Helpers
             var grid = (DataGridView)control[0];
             return grid;
         }
+
+        public static void ChangeCheckBoxColumnValue(this DataGridView grid, bool checkBoxValue)
+        {
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+                row.Cells[SearchForm.SelectedColumnName].Value = checkBoxValue;
+            }
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace TKD.Emailer
         private const string RankMinimumSelector = "rankMinimumSelector";
 
         private const string ResultsGridName = "SearchResultsGrid";
-        private const string SelectedColumnName = "Selected";
+        internal const string SelectedColumnName = "Selected";
         private const string CategorySelector = "CategorySelector";
 
         public const string AllConstant = "All";
@@ -246,10 +246,7 @@ namespace TKD.Emailer
         private static void SelectionChange(object sender, EventArgs e)
         {
             var grid = (DataGridView)sender;
-            foreach (DataGridViewRow row in grid.Rows)
-            {
-                row.Cells[SelectedColumnName].Value = false;
-            }
+            grid.ChangeCheckBoxColumnValue(false);
 
             var selectedCells = grid.SelectedCells;
             foreach (var selectedCell in selectedCells)
@@ -300,11 +297,7 @@ namespace TKD.Emailer
             var resultsGrid = resultsPanel.GetDataGridViewFromPanelByName(ResultsGridName);
 
             var selectAll = ((CheckBox)sender).Checked;
-
-            foreach (DataGridViewRow row in resultsGrid.Rows)
-            {
-                row.Cells[SelectedColumnName].Value = selectAll;
-            }
+            resultsGrid.ChangeCheckBoxColumnValue(selectAll);
         }
     }
 }
