@@ -231,8 +231,10 @@ namespace TKD.Emailer
         private void StyleResultsGrid(DataGridView grid)
         {
             AddSelectorColumn(grid);
-            grid.SelectionChanged += SelectionChange;
             grid.CurrentCell = null;
+            // grid.SelectionChanged += SelectionChange;
+            grid.CurrentCellChanged += SelectionChange;
+            
             grid.AllowUserToResizeColumns = true;
             grid.RowHeadersVisible = false;
             grid.AllowUserToResizeRows = true;
@@ -244,10 +246,20 @@ namespace TKD.Emailer
         private static void SelectionChange(object sender, EventArgs e)
         {
             var grid = (DataGridView)sender;
-            var selectedRow = grid.CurrentRow;
-            var checkboxCellForRow = selectedRow.Cells[0];
-            checkboxCellForRow.Selected = true;
-            checkboxCellForRow.Value = true;
+            foreach (DataGridViewRow row in grid.Rows)
+            {
+                row.Cells[SelectedColumnName].Value = false;
+            }
+
+            var selectedCells = grid.SelectedCells;
+            foreach (var selectedCell in selectedCells)
+            {
+                var cell = selectedCell as DataGridViewCell;
+                var selectedRow = cell.OwningRow;
+                var checkboxCellForRow = selectedRow.Cells[0];
+                checkboxCellForRow.Selected = cell.Selected;
+                checkboxCellForRow.Value = cell.Selected;
+            }
         }
 
         private void AddSelectorColumn(DataGridView grid)
