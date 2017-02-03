@@ -137,36 +137,19 @@ namespace TKD.Emailer
 
             var selectedCategoryValue = CategoryPanel.Controls.OfType<ComboBox>()
                 .Single().SelectedValue as int?;
-
             
             var ageCategoryButtonText = AgePanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Text;
 
-            int? ageMin = null;
-            int? ageMax = null;
-            if (ageCategoryButtonText == AgeRangeText)
-            {
-                ageMin = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
-                    .Single(numeric => numeric.Name == "ageMinInput")
-                    .Value);
-                ageMax = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
-                    .Single(numeric => numeric.Name == "ageMaxInput")
-                    .Value);
-            }
-
-            int? rankMin = null;
-            int? rankMax = null;
-            if (checkedRankButtonName == "beltRangeButton")
-            {
-                rankMin = Convert.ToInt32(RankPanel.Controls.OfType<ComboBox>()
-                    .First(comboBox => comboBox.Name == RankMinimumSelector).SelectedValue);
-                rankMax = Convert.ToInt32(RankPanel.Controls.OfType<ComboBox>()
-                    .First(comboBox => comboBox.Name == RankMaximumSelector).SelectedValue);
-            }
-
             var clubMembershipButtonText = MembershipPanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Text;
 
+            int? ageMax;
+            var ageMin = GetAgeMinAndMax(ageCategoryButtonText, out ageMax);
+
+            int? rankMax;
+            var rankMin = GetRankMinAndMax(checkedRankButtonName, out rankMax);
+            
             var sql = m_searchService.BuildSql(checkedRankButtonName, 
                 rankMin,
                 rankMax,
@@ -181,6 +164,36 @@ namespace TKD.Emailer
             AddSendEmailButton();
             StyleResultsGrid(grid);
             resultsPanel.Controls.Add(grid);
+        }
+
+        private int? GetRankMinAndMax(string checkedRankButtonName, out int? rankMax)
+        {
+            int? rankMin = null;
+            rankMax = null;
+            if (checkedRankButtonName == "beltRangeButton")
+            {
+                rankMin = Convert.ToInt32(RankPanel.Controls.OfType<ComboBox>()
+                    .First(comboBox => comboBox.Name == RankMinimumSelector).SelectedValue);
+                rankMax = Convert.ToInt32(RankPanel.Controls.OfType<ComboBox>()
+                    .First(comboBox => comboBox.Name == RankMaximumSelector).SelectedValue);
+            }
+            return rankMin;
+        }
+
+        private int? GetAgeMinAndMax(string ageCategoryButtonText, out int? ageMax)
+        {
+            int? ageMin = null;
+            ageMax = null;
+            if (ageCategoryButtonText == AgeRangeText)
+            {
+                ageMin = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
+                    .Single(numeric => numeric.Name == "ageMinInput")
+                    .Value);
+                ageMax = Convert.ToInt32(AgePanel.Controls.OfType<NumericUpDown>()
+                    .Single(numeric => numeric.Name == "ageMaxInput")
+                    .Value);
+            }
+            return ageMin;
         }
 
         private void ClearPriorResults()
