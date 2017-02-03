@@ -299,5 +299,10 @@ namespace TKD.Emailer
             var selectAll = ((CheckBox)sender).Checked;
             resultsGrid.ChangeCheckBoxColumnValue(selectAll);
         }
+
+        private void SearchForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -66,5 +66,10 @@ namespace TKD.Emailer
         {
             System.Diagnostics.Process.Start("https://creativemarket.com/web-app-icons");
         }
+
+        private void ComposeEmailForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

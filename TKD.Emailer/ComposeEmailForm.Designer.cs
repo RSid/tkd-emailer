@@ -111,6 +111,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ComposeEmailForm";
             this.Text = "ComposeEmail";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ComposeEmailForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

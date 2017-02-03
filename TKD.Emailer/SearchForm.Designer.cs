@@ -419,6 +419,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SearchForm";
             this.Text = "TKD Emailer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchForm_FormClosed);
             this.GenderPanel.ResumeLayout(false);
             this.GenderPanel.PerformLayout();
             this.AgePanel.ResumeLayout(false);
