@@ -127,6 +127,8 @@ namespace TKD.Emailer
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            ClearPriorResults();
+
             var checkedGenderButtonName = GenderPanel.Controls.OfType<RadioButton>()
                 .First(radio => radio.Checked).Name;
 
@@ -181,6 +183,16 @@ namespace TKD.Emailer
             resultsPanel.Controls.Add(grid);
         }
 
+        private void ClearPriorResults()
+        {
+            var resultsGrid = resultsPanel.GetDataGridViewFromPanelByName(ResultsGridName);
+
+            if (resultsGrid != null)
+            {
+                resultsPanel.Controls.Remove(resultsGrid);
+            }
+        }
+
         private void SendResultsToSelectedButton_Click(object sender, EventArgs e)
         {
             var resultsGrid = resultsPanel.GetDataGridViewFromPanelByName(ResultsGridName);
@@ -232,7 +244,6 @@ namespace TKD.Emailer
         {
             AddSelectorColumn(grid);
             grid.CurrentCell = null;
-            // grid.SelectionChanged += SelectionChange;
             grid.CurrentCellChanged += SelectionChange;
             
             grid.AllowUserToResizeColumns = true;

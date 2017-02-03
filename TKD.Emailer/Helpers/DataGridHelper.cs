@@ -27,7 +27,7 @@ namespace TKD.Emailer.Helpers
         public static DataGridView GetDataGridViewFromPanelByName(this Panel panel, string gridName)
         {
             var control = panel.Controls.Find(gridName, true);
-            var grid = (DataGridView)control[0];
+            var grid = (DataGridView)control.FirstOrDefault();
             return grid;
         }
 
